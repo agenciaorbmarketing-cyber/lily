@@ -96,15 +96,20 @@
     .cta:focus{outline:3px solid rgba(201,138,26,0.12); outline-offset:4px}
 
     /* right: single background image (use only images/hero.jpg) */
-    .right{
-      width:520px;
-      min-width:220px;
-      background-image:url("images/hero.jpg");
-      background-size:cover;
-      background-repeat:no-repeat;
-      background-position: center right; /* desktop focus: Lily on right */
-      position:relative;
-    }
+.right{
+  width:520px;
+  min-width:220px;
+  position:relative;
+  overflow:hidden;
+}
+
+.right img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:right center;
+  display:block;
+}
 
     /* faint tonal overlay for balance */
     .right::before{
@@ -124,20 +129,16 @@
     }
 
     /* Responsive: stack on small screens and shift background focus to keep Lily visible */
-    @media (max-width:980px){
-      .wrap{flex-direction:column-reverse}
-      .right{width:100%;height:52vh;background-position:center 72%}
-      .left{padding:32px}
-      h1{font-size:42px}
-      p.lead{font-size:15px}
-      .cta{padding:14px 28px;font-size:16px}
-    }
+    @media (max-width:900px){
+  .frame{
+    flex-direction:column-reverse;
+  }
 
-    @media (max-width:420px){
-      h1{font-size:30px}
-      p.lead{font-size:14px;line-height:1.6}
-      .right{height:44vh;background-position:center 82%}
-    }
+  .right{
+    width:100%;
+    height:46vh;
+  }
+}
   </style>
 </head>
 <body>
@@ -159,10 +160,19 @@
       </a>
     </section>
 
-    <aside class="right" role="img" aria-label="Foto de Lily Zemuner em seu ambiente projetado">
-      <!-- hidden fallback image for accessibility/SEO -->
-      <img class="sr-only" src="images/hero.jpg" alt="Lily Zemuner sentada em ambiente projetado com tons quentes">
-    </aside>
+    <aside class="right" role="img" aria-label="Lily Zemuner sentada em ambiente projetado">
+  <picture>
+    <!-- Mobile -->
+    <source media="(max-width: 900px)" srcset="images/hero-mobile.jpg">
+
+    <!-- Desktop -->
+    <img 
+      src="images/hero.jpg" 
+      alt="Lily Zemuner sentada em ambiente projetado"
+      style="width:100%; height:100%; object-fit:cover; object-position:right center; display:block;"
+    >
+  </picture>
+</aside>
   </div>
 </body>
 </html>
