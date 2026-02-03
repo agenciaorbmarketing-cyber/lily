@@ -17,13 +17,9 @@
       --radius:18px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{box-sizing:border-box;}
 
-    html,body{
-      height:100%;
-    }
+    html,body{height:100%;}
 
     body{
       margin:0;
@@ -119,41 +115,30 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(
-        90deg,
-        rgba(255,255,255,0.00),
-        rgba(20,12,8,0.06)
-      );
+      background:linear-gradient(90deg, rgba(255,255,255,0.00), rgba(20,12,8,0.06));
       pointer-events:none;
     }
 
     /* MOBILE */
     @media (max-width:900px){
 
-      body{
-        padding:16px;
-      }
+      body{padding:16px;}
 
-      .wrap{
-        flex-direction:column-reverse;
-      }
+      .wrap{flex-direction:column-reverse;}
 
-      .left{
-        padding:48px 28px;
-      }
+      .left{padding:48px 28px;}
 
-      h1{
-        font-size:48px;
-      }
+      h1{font-size:48px;}
 
       .right{
         width:100%;
-        height:66vh;      /* 🔥 IMAGEM MAIOR */
+        height:66vh;      /* imagem maior */
         min-height:auto;
       }
 
+      /* 🔥 FOCO NO ROSTO NO MOBILE */
       .right img{
-        object-position:right 8%; /* 🎯 FOCO NO ROSTO */
+        object-position:right 4%;
       }
     }
   </style>
