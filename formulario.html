@@ -1,85 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solicitar Orçamento | Lily Zemuner</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solicitar Orçamento — Lily Zemuner</title>
+<meta name="description" content="Solicitação de orçamento — formulário de contato para projetos de arquitetura.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-body {
-  background:#f6f4f1;
-  font-family:Inter,sans-serif;
-  padding:64px;
-}
-
-.container {
-  max-width:600px;
-  margin:auto;
-  background:#fff;
-  padding:56px;
-}
-
-h1 {
-  font-family:"Playfair Display",serif;
-  font-size:32px;
-  margin-bottom:32px;
-}
-
-form {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-input, textarea, select, button {
-  padding:14px;
-  font-size:14px;
-  border:1px solid #ccc;
-}
-
-button {
-  background:#1c1c1c;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-}
-
-button:hover { opacity:.9; }
-
-@media(max-width:600px){
-  body { padding:24px; }
-  .container { padding:32px; }
-}
+:root{--bg:#fbf8f5;--accent:#b68f59;--muted:#6f6b66}
+body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:#222;padding:28px}
+.container{max-width:760px;margin:20px auto;background:#fff;border-radius:14px;padding:28px;box-shadow:0 18px 40px rgba(0,0,0,0.05)}
+h1{font-family:"Playfair Display",serif;margin:0 0 12px;font-size:28px}
+form{display:flex;flex-direction:column;gap:14px}
+label{font-weight:600;color:var(--muted);font-size:13px}
+input[type="text"], input[type="email"], select, textarea{padding:12px 14px;border-radius:10px;border:1px solid #e7e1da;font-size:15px}
+.radio-group{display:flex;gap:10px;flex-wrap:wrap}
+.radio{padding:10px 12px;border-radius:10px;border:1px solid #eee;background:#fff;cursor:pointer;font-weight:700}
+.radio input{display:none}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:6px}
+.btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn-ghost{background:none;color:var(--muted);border:1px solid rgba(0,0,0,0.05)}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#7f5e38);color:#fff}
+.error{color:#b44336;font-size:13px;min-height:18px}
+.thank{display:none;text-align:center;padding:18px}
+@media(max-width:640px){.container{padding:18px}}
 </style>
 </head>
-
 <body>
+<div class="container" role="main" aria-labelledby="formTitle">
+  <h1 id="formTitle">Solicitar Orçamento</h1>
+  <p style="color:var(--muted);margin-bottom:8px">Preencha as etapas. No final você será redirecionado ao WhatsApp com os dados prontos.</p>
 
-<div class="container">
-<h1>Solicitar orçamento</h1>
+  <form id="leadForm" novalidate>
+    <!-- Step 1 -->
+    <div class="step" data-step="0">
+      <label for="nome">Nome completo</label>
+      <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required />
+      <div class="error" aria-live="polite"></div>
+    </div>
 
-<form id="form">
-  <input required placeholder="Nome completo">
-  <input type="email" required placeholder="E-mail">
-  <input required placeholder="WhatsApp">
-  <select required>
-    <option value="">Tipo de projeto</option>
-    <option>Residencial</option>
-    <option>Comercial</option>
-  </select>
-  <textarea placeholder="Conte brevemente sobre o que você imagina"></textarea>
-  <button type="submit">Enviar</button>
-</form>
+    <!-- Step 2 -->
+    <div class="step" data-step="1" hidden>
+      <label>Tipo de projeto</label>
+      <div class="radio-group" role="radiogroup">
+        <label class="radio"><input type="radio" name="tipo" value="Casa nova">Casa nova</label>
+        <label class="radio"><input type="radio" name="tipo" value="Reforma">Reforma</label>
+        <label class="radio"><input type="radio" name="tipo" value="Apartamento">Apartamento</label>
+      </div>
+      <div class="error" aria-live="polite"></div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" data-step="2" hidden>
+      <label for="local">Local do projeto (cidade / bairro)</label>
+      <input id="local" name="local" type="text" placeholder="Ex.: São Paulo — Jardim Paulista" required />
+      <div class="error" aria-live="polite"></div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step" data-step="3" hidden>
+      <label for="prazo">Prazo estimado para início</label>
+      <select id="prazo" name="prazo" required>
+        <option value="">Selecione</option>
+        <option>Imediato (0 a 3 meses)</option>
+        <option>Entre 3 e 6 meses</option>
+        <option>Entre 6 e 12 meses</option>
+        <option>Mais de 12 meses</option>
+      </select>
+      <div class="error" aria-live="polite"></div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step" data-step="4" hidden>
+      <label for="investimento">Faixa de investimento estimado</label>
+      <select id="investimento" name="investimento" required>
+        <option value="">Selecione</option>
+        <option>Menos de R$ 500 mil</option>
+        <option>R$ 500 mil a R$ 1 milhão</option>
+        <option>R$ 1 milhão a R$ 3 milhões</option>
+        <option>R$ 3 milhões a R$ 5 milhões</option>
+        <option>R$ 5 milhões a R$ 10 milhões</option>
+        <option>Mais de R$ 10 milhões</option>
+      </select>
+      <div class="error" aria-live="polite"></div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step" data-step="5" hidden>
+      <label for="mensagem">Mensagem / Observações</label>
+      <textarea id="mensagem" name="mensagem" placeholder="Detalhes (nº de quartos, estilo preferido...)" rows="4"></textarea>
+      <div class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="actions" role="group" aria-label="Ações do formulário">
+      <button type="button" id="backBtn" class="btn btn-ghost" style="visibility:hidden">Voltar</button>
+      <button type="button" id="nextBtn" class="btn btn-primary">Continuar</button>
+    </div>
+  </form>
+
+  <div class="thank" id="thank" role="status" aria-live="polite">
+    <h2 style="font-family:'Playfair Display',serif;">Obrigada</h2>
+    <p style="color:var(--muted)">Seu pedido foi preparado. Você será direcionado ao WhatsApp.</p>
+    <div style="margin-top:12px"><a href="index.html" class="btn btn-ghost">Voltar ao início</a></div>
+  </div>
 </div>
 
 <script>
-document.getElementById("form").addEventListener("submit",function(e){
-  e.preventDefault();
-  window.open("https://wa.me/5511994873720","_blank");
-});
-</script>
+(function(){
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+  const form = document.getElementById('leadForm');
+  const thank = document.getElementById('thank');
+  let current = 0;
 
+  function show(i){
+    steps.forEach((s,idx)=>{
+      if(idx===i){ s.hidden = false; s.querySelector('.error').textContent=''; }
+      else s.hidden = true;
+    });
+    backBtn.style.visibility = i===0 ? 'hidden' : 'visible';
+    nextBtn.textContent = i===steps.length-1 ? 'Enviar' : 'Continuar';
+    // focus
+    const f = steps[i].querySelector('input,select,textarea,.radio');
+    if(f) f.focus();
+  }
+
+  function validateStep(){
+    const step = steps[current];
+    const error = step.querySelector('.error');
+    error.textContent = '';
+    // radio group
+    if(step.querySelector('.radio-group')){
+      if(!step.querySelector('input[type="radio"]:checked')){
+        error.textContent = 'Selecione uma opção.';
+        return false;
+      }
+    }
+    const input = step.querySelector('input[required], select[required], textarea[required]');
+    if(input){
+      if(input.tagName.toLowerCase()==='select' && !input.value){
+        error.textContent = 'Campo obrigatório.'; return false;
+      }
+      if(input.tagName.toLowerCase()!=='select' && !input.value.trim()){
+        error.textContent = 'Campo obrigatório.'; return false;
+      }
+      if(input.type==='email'){
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(input.value.trim())){ error.textContent = 'E-mail inválido.'; return false; }
+      }
+    }
+    return true;
+  }
+
+  nextBtn.addEventListener('click', ()=>{
+    if(!validateStep()) return;
+    if(current < steps.length - 1){ current++; show(current); }
+    else {
+      // prepare message and open whatsapp
+      const nome = document.getElementById('nome').value.trim();
+      const tipo = (document.querySelector('input[name="tipo"]:checked') || {}).value || '';
+      const local = document.getElementById('local').value.trim();
+      const prazo = document.getElementById('prazo').value || '';
+      const investimento = document.getElementById('investimento').value || '';
+      const mensagem = document.getElementById('mensagem').value.trim();
+
+      const lines = [
+        'Olá, gostaria de solicitar um orçamento de projeto.',
+        '',
+        'Nome: ' + nome,
+        'Tipo de projeto: ' + tipo,
+        'Local do projeto: ' + local,
+        'Prazo estimado para início: ' + prazo,
+        'Faixa de investimento estimado: ' + investimento
+      ];
+      if(mensagem) lines.push('Observações: ' + mensagem);
+
+      const text = encodeURIComponent(lines.join('\n'));
+      const phone = '5511994873720';
+      // show thank you and open WhatsApp
+      form.style.display = 'none';
+      thank.style.display = 'block';
+      window.open('https://api.whatsapp.com/send?phone=' + phone + '&text=' + text, '_blank');
+    }
+  });
+
+  backBtn.addEventListener('click', ()=>{
+    if(current>0){ current--; show(current); }
+  });
+
+  // radio click support
+  document.querySelectorAll('.radio').forEach(r=>{
+    r.addEventListener('click', ()=> {
+      const input = r.querySelector('input[type="radio"]');
+      if(input) input.checked = true;
+      // visually ensure checked style (if you want add class)
+    });
+  });
+
+  // init
+  show(0);
+
+  // allow Enter to advance (not inside textarea)
+  form.addEventListener('keydown', e=>{
+    if(e.key==='Enter'){
+      const tag = document.activeElement.tagName.toLowerCase();
+      if(tag==='textarea') return;
+      e.preventDefault();
+      nextBtn.click();
+    }
+  });
+
+})();
+</script>
 </body>
 </html>
