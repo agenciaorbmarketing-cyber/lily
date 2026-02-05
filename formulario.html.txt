@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar Orçamento | Lily Zemuner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background:#f6f4f1;
+  font-family:Inter,sans-serif;
+  padding:64px;
+}
+
+.container {
+  max-width:600px;
+  margin:auto;
+  background:#fff;
+  padding:56px;
+}
+
+h1 {
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  margin-bottom:32px;
+}
+
+form {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+input, textarea, select, button {
+  padding:14px;
+  font-size:14px;
+  border:1px solid #ccc;
+}
+
+button {
+  background:#1c1c1c;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+}
+
+button:hover { opacity:.9; }
+
+@media(max-width:600px){
+  body { padding:24px; }
+  .container { padding:32px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Solicitar orçamento</h1>
+
+<form id="form">
+  <input required placeholder="Nome completo">
+  <input type="email" required placeholder="E-mail">
+  <input required placeholder="WhatsApp">
+  <select required>
+    <option value="">Tipo de projeto</option>
+    <option>Residencial</option>
+    <option>Comercial</option>
+  </select>
+  <textarea placeholder="Conte brevemente sobre o que você imagina"></textarea>
+  <button type="submit">Enviar</button>
+</form>
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  window.open("https://wa.me/5511994873720","_blank");
+});
+</script>
+
+</body>
+</html>
