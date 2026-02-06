@@ -1,139 +1,142 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lily Zemuner · Arquitetura e Interiores</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lily Zemuner — Arquitetura de Alto Padrão</title>
+<meta name="description" content="Lily Zemuner — projetos residenciais autorais e atemporais.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --bg:#f6f3ef;
-  --muted:#6f6a63;
+  --bg:#f7f5f2;
+  --card:#ffffff;
+  --muted:#7a746c;
   --accent:#b08a55;
   --accent-2:#8f6d3f;
-  --dark:#22201d;
+  --ink:#25221f;
   --radius:20px;
-  --max:1080px;
+  --max-width:1160px;
 }
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter,system-ui;
-  background:linear-gradient(180deg,#fbf8f5,#f5f1ee);
-  color:var(--dark);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:linear-gradient(180deg,#fbf8f5 0%, #f5f1ee 100%);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
 }
-.container{max-width:var(--max);margin:auto;padding:28px}
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.container{max-width:var(--max-width);margin:0 auto;padding:36px 28px}
+.header{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;padding:6px 0;
 }
-.brand img{height:48px}
-nav{display:flex;gap:14px}
-nav a{
-  text-decoration:none;
-  color:var(--muted);
-  font-weight:600;
-}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+.brand img{height:48px;display:block}
+.nav{display:flex;gap:14px;align-items:center}
+.nav a{font-weight:600;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px}
 .btn{
-  padding:10px 16px;
-  border-radius:12px;
-  font-weight:700;
+  padding:12px 16px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
 }
-.btn-primary{
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:#fff;
-}
-.btn-ghost{
-  border:1px solid rgba(0,0,0,.08);
-  color:var(--dark);
-  background:#fff;
-}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 12px 30px rgba(125,92,56,0.12)}
+.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink)}
+
+/* HERO */
 .hero{
-  display:grid;
-  grid-template-columns:1fr 480px;
-  gap:32px;
-  margin-top:28px;
+  display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:stretch;margin-top:20px;
 }
-.hero-left{
-  background:#fff;
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
   border-radius:var(--radius);
-  padding:44px;
+  padding:52px;
+  box-shadow:0 24px 60px rgba(17,15,14,0.06);
 }
-.hero-left h1{
-  font-family:"Playfair Display",serif;
-  font-size:40px;
-}
-.hero-left p{color:var(--muted)}
-.hero-actions{margin-top:18px;display:flex;gap:12px}
-.hero-right{
-  border-radius:var(--radius);
-  overflow:hidden;
-}
-.hero-right img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 30%;
-}
+.eyebrow{font-size:13px;color:var(--accent-2);font-weight:700;letter-spacing:0.5px}
+h1{font-family:"Playfair Display",serif;font-size:44px;margin:12px 0}
+.lead{color:var(--muted);font-size:16px;max-width:62ch}
+
+/* hero image */
+.hero-visual{border-radius:var(--radius);overflow:hidden;min-height:420px;box-shadow:0 30px 80px rgba(22,20,18,0.06);display:flex;align-items:center;justify-content:center;background:#ece8e4}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 28%}
+
+/* Sobre */
 .section{margin-top:48px}
-.section h2{
-  font-family:"Playfair Display",serif;
+.section h2{font-family:"Playfair Display",serif;font-size:22px;margin:0 0 10px}
+.section p{color:var(--muted);max-width:70ch}
+
+/* Footer */
+footer{margin-top:46px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:26px}
+  .hero-visual{min-height:320px}
 }
-footer{
-  margin-top:48px;
-  color:var(--muted);
-  font-size:14px;
-}
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
+@media (max-width:560px){
+  .container{padding:22px}
+  h1{font-size:30px}
+  .hero-card{padding:28px}
+  .hero-visual img{object-position:center 20%}
 }
 </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="container" role="main">
+    <header class="header" role="banner">
+      <a class="brand" href="index.html" aria-label="Lily Zemuner home">
+        <img id="logo" src="assets/images/logo.png" alt="Lily Zemuner logo">
+      </a>
 
-<header>
-  <a class="brand" href="index.html">
-    <img src="assets/images/logo.png" alt="Lily Zemuner">
-  </a>
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank">Ver Portfólio</a>
-    <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
-  </nav>
-</header>
+      <nav class="nav" role="navigation" aria-label="principal">
+        <a href="#sobre">Sobre</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
+        <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
+      </nav>
+    </header>
 
-<section class="hero">
-  <div class="hero-left">
-    <h1>Lily Zemuner</h1>
-    <p>Arquitetura residencial de alto padrão, com projetos autorais, atemporais e cuidadosamente personalizados.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank">Ver Portfólio</a>
-    </div>
+    <main>
+      <section class="hero" aria-label="Apresentação">
+        <div class="hero-card" aria-labelledby="hero-title">
+          <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+          <h1 id="hero-title">Lily Zemuner — projetos com alma e precisão</h1>
+          <p class="lead">Projetos residenciais autorais que unem estética atemporal, função e conforto. Soluções personalizadas para clientes que buscam excelência em acabamento e experiência.</p>
+
+          <div style="margin-top:22px;display:flex;gap:12px">
+            <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
+            <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="false">
+          <img id="heroImg" src="assets/images/hero.jpg" alt="Lily Zemuner em biblioteca — institucional">
+        </div>
+      </section>
+
+      <section id="sobre" class="section" aria-label="Sobre">
+        <h2>Sobre</h2>
+        <p>Arquiteta com atuação focada em residências de alto padrão. Processos que unem planejamento, estética e execução rigorosa para garantir resultado atemporal.</p>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div>© <span id="year"></span> Lily Zemuner</div>
+      <div style="color:var(--muted)">Publicação via GitHub Pages</div>
+    </footer>
   </div>
-  <div class="hero-right">
-    <img src="assets/images/hero.jpg" alt="Foto institucional Lily Zemuner">
-  </div>
-</section>
-
-<section id="sobre" class="section">
-  <h2>Sobre</h2>
-  <p>Projetos que equilibram estética, funcionalidade e conforto, desenvolvidos com atenção minuciosa aos detalhes e às necessidades de cada cliente.</p>
-</section>
-
-<footer>
-  © <span id="year"></span> Lily Zemuner
-</footer>
-
-</div>
 
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
+const heroImg = document.getElementById('heroImg');
+heroImg.addEventListener('error', ()=> {
+  console.warn('Hero image missing: /assets/images/hero.jpg (case-sensitive).');
+  heroImg.style.background='#e9e6e2';
+  heroImg.alt = 'Foto institucional';
+});
+const logo = document.getElementById('logo');
+logo.addEventListener('error', ()=> {
+  console.warn('Logo missing: /assets/images/logo.png (case-sensitive).');
+  logo.remove();
+});
 </script>
 </body>
 </html>
