@@ -1,163 +1,301 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Solicitar Orçamento</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Solicitar Orçamento — Lily Zemuner</title>
+<meta name="description" content="Formulário de solicitação de orçamento — Lily Zemuner.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  background:#fbf8f5;
-  padding:28px;
+:root{
+  --bg:#fbf8f5;
+  --card:#fff;
+  --muted:#7a746c;
+  --accent:#b08a55;
+  --accent-2:#8f6d3f;
+  --ink:#22221f;
+  --radius:14px;
+  --max:760px;
 }
-.container{
-  max-width:760px;
-  margin:auto;
-  background:#fff;
-  padding:28px;
-  border-radius:14px;
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--ink);padding:28px}
+.container{max-width:var(--max);margin:24px auto;background:var(--card);border-radius:14px;padding:28px;box-shadow:0 24px 60px rgba(17,15,14,0.06)}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.header .brand{display:flex;align-items:center;gap:12px}
+.header img{height:40px}
+h1{font-family:"Playfair Display",serif;margin:0 0 6px;font-size:26px}
+.lead{color:var(--muted);margin-bottom:18px}
+
+/* steps */
+.steps{display:flex;gap:8px;margin-bottom:18px}
+.step-ind{flex:1;height:6px;background:#efeae5;border-radius:6px}
+.step-ind.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+/* step card */
+.step-card{background:#fff;border-radius:12px;padding:18px;border:1px solid #f0ebe6}
+label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
+.input, textarea, select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e7e1da;font-size:15px;background:#fff}
+.radio-grid{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
+.option{
+  flex:1;min-width:140px;padding:12px;border-radius:12px;border:1px solid #eee;background:#fff;cursor:pointer;font-weight:700;text-align:center;transition:all 180ms ease;
 }
-h1{font-family:"Playfair Display",serif}
-.step{margin-bottom:20px}
-label{font-weight:600;color:#6f6a63}
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  border-radius:10px;
-  border:1px solid #ddd;
-}
-.radio-group{
-  display:flex;
-  gap:12px;
-  margin-top:10px;
-}
-.radio{
-  flex:1;
-  padding:14px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  cursor:pointer;
-  text-align:center;
-  font-weight:600;
-}
-.radio.active{
-  border-color:#b08a55;
-  background:#f6f3ef;
-}
-.actions{
-  display:flex;
-  justify-content:space-between;
-}
-.btn{
-  padding:12px 18px;
-  border-radius:12px;
-  border:none;
-  font-weight:700;
-}
-.btn-primary{
-  background:#b08a55;
-  color:#fff;
-}
-.btn-ghost{
-  background:none;
-  color:#666;
-}
-.hidden{display:none}
+.option.active{border-color:var(--accent);box-shadow:0 12px 30px rgba(176,138,85,0.08);background:linear-gradient(180deg, rgba(176,138,85,0.06), rgba(176,138,85,0.02));color:var(--ink)}
+.err{color:#b44336;font-size:13px;min-height:18px;margin-top:8px}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:16px}
+.btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
+.btn-ghost{background:none;color:var(--muted);border:1px solid rgba(0,0,0,0.04)}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+
+/* thankyou */
+.thank{display:none;text-align:center;padding:18px}
+
+/* responsive */
+@media(max-width:640px){.header img{height:36px}.container{padding:20px}}
 </style>
 </head>
-
 <body>
-<div class="container">
-<h1>Solicitar Orçamento</h1>
-
-<form id="form">
-
-<div class="step" data-step="0">
-  <label>Nome completo</label>
-  <input id="nome" required>
-</div>
-
-<div class="step hidden" data-step="1">
-  <label>Tipo de projeto</label>
-  <div class="radio-group">
-    <div class="radio" data-value="Casa nova">Casa nova</div>
-    <div class="radio" data-value="Reforma">Reforma</div>
+<div class="container" role="main">
+  <div class="header">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="Lily Zemuner">
+      <div style="font-family:Playfair Display,serif;font-weight:600">Solicitar Orçamento</div>
+    </div>
+    <a href="index.html" style="text-decoration:none;color:var(--muted)">Voltar</a>
   </div>
-</div>
 
-<div class="step hidden" data-step="2">
-  <label>Local do projeto</label>
-  <input id="local" required>
-</div>
+  <h1>Solicitar Orçamento</h1>
+  <p class="lead">Preencha as etapas. Ao finalizar você será redirecionado ao WhatsApp com as informações.</p>
 
-<div class="step hidden" data-step="3">
-  <label>Deseja adicionar alguma observação?</label>
-  <div class="radio-group">
-    <div class="radio" data-value="sim">Sim</div>
-    <div class="radio" data-value="nao">Não</div>
+  <div class="steps" aria-hidden="true">
+    <div class="step-ind active" data-index="0"></div>
+    <div class="step-ind" data-index="1"></div>
+    <div class="step-ind" data-index="2"></div>
+    <div class="step-ind" data-index="3"></div>
   </div>
-</div>
 
-<div class="step hidden" data-step="4">
-  <label>Observações</label>
-  <textarea id="mensagem"></textarea>
-</div>
+  <form id="form" novalidate>
+    <!-- STEP 0: nome -->
+    <div class="step-card" data-step="0">
+      <label for="nome">Nome completo</label>
+      <input id="nome" class="input" type="text" required aria-required="true" />
+      <div class="err" aria-live="polite"></div>
+    </div>
 
-<div class="actions">
-  <button type="button" class="btn btn-ghost" id="back">Voltar</button>
-  <button type="button" class="btn btn-primary" id="next">Continuar</button>
-</div>
+    <!-- STEP 1: tipo projeto -->
+    <div class="step-card" data-step="1" hidden>
+      <label>Tipo de projeto</label>
+      <div class="radio-grid" role="radiogroup" aria-label="Tipo de projeto">
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Casa nova">Casa nova</div>
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Reforma">Reforma</div>
+      </div>
+      <div class="err" aria-live="polite"></div>
+    </div>
 
-</form>
+    <!-- STEP 2: local -->
+    <div class="step-card" data-step="2" hidden>
+      <label for="local">Local do projeto (cidade / bairro)</label>
+      <input id="local" class="input" type="text" required />
+      <div class="err" aria-live="polite"></div>
+    </div>
+
+    <!-- STEP 3: deseja observacao -->
+    <div class="step-card" data-step="3" hidden>
+      <label>Deseja adicionar alguma observação?</label>
+      <div class="radio-grid" role="radiogroup" aria-label="Adicionar observação">
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="sim">Sim</div>
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="nao">Não</div>
+      </div>
+      <div class="err" aria-live="polite"></div>
+    </div>
+
+    <!-- STEP 4: textarea (conditional) -->
+    <div class="step-card" data-step="4" hidden>
+      <label for="mensagem">Observações</label>
+      <textarea id="mensagem" class="input" rows="5" placeholder="Digite sua observação"></textarea>
+      <div class="err" aria-live="polite"></div>
+    </div>
+
+    <div class="actions" role="group" aria-label="Ações do formulário">
+      <button type="button" id="back" class="btn btn-ghost">Voltar</button>
+      <button type="button" id="next" class="btn btn-primary">Continuar</button>
+    </div>
+  </form>
+
+  <div class="thank" id="thank" role="status" aria-live="polite" hidden>
+    <h2 style="font-family:Playfair Display,serif">Obrigada</h2>
+    <p style="color:var(--muted)">Seu pedido foi preparado. Você será direcionado ao WhatsApp.</p>
+    <div style="margin-top:12px"><a class="btn btn-ghost" href="index.html">Voltar ao início</a></div>
+  </div>
 </div>
 
 <script>
-const steps=document.querySelectorAll('.step');
-let current=0;
-let tipoProjeto='';
-let observacao='';
+/* Multi-step logic with card-selection highlighting and conditional textarea */
+(function(){
+  const steps = Array.from(document.querySelectorAll('[data-step]'));
+  const indicators = Array.from(document.querySelectorAll('.step-ind'));
+  const nextBtn = document.getElementById('next');
+  const backBtn = document.getElementById('back');
+  const thank = document.getElementById('thank');
+  const form = document.getElementById('form');
 
-function show(){
-  steps.forEach((s,i)=>s.classList.toggle('hidden',i!==current));
-}
-show();
+  let current = 0;
+  let selection = { tipo: '', desejaObservacao: '', mensagem: '' };
 
-document.querySelectorAll('.radio').forEach(r=>{
-  r.onclick=()=>{
-    r.parentNode.querySelectorAll('.radio').forEach(x=>x.classList.remove('active'));
-    r.classList.add('active');
-    if(current===1) tipoProjeto=r.dataset.value;
-    if(current===3) observacao=r.dataset.value;
+  function show(i){
+    steps.forEach(s => s.hidden = Number(s.dataset.step) !== i);
+    indicators.forEach((ind, idx)=> ind.classList.toggle('active', idx <= i));
+    // focus first focusable
+    const focusable = steps[i].querySelector('input, textarea, .option, select');
+    if(focusable) focusable.focus();
+    backBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
+    nextBtn.textContent = i === (steps.length - 1) ? 'Enviar' : 'Continuar';
   }
-});
+  show(0);
 
-next.onclick=()=>{
-  if(current===3 && observacao==='nao'){
-    enviar();
-    return;
+  // option click handler (delegated)
+  document.querySelectorAll('.option').forEach(opt=>{
+    // click
+    opt.addEventListener('click', ()=> {
+      const group = opt.parentNode;
+      group.querySelectorAll('.option').forEach(o => {
+        o.classList.remove('active');
+        o.setAttribute('aria-checked','false');
+      });
+      opt.classList.add('active');
+      opt.setAttribute('aria-checked','true');
+
+      // assign value based on which step group we're in
+      const stepCard = opt.closest('[data-step]');
+      const stepIdx = Number(stepCard.dataset.step);
+      const val = opt.dataset.value;
+      if(stepIdx === 1) selection.tipo = val;
+      if(stepIdx === 3) selection.desejaObservacao = val;
+    });
+    // keyboard support
+    opt.addEventListener('keydown', (e)=> {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault(); opt.click();
+      }
+    });
+  });
+
+  function validateStep(i){
+    const stepCard = steps.find(s => Number(s.dataset.step) === i);
+    const err = stepCard.querySelector('.err');
+    err.textContent = '';
+    // step-specific validation
+    if(i === 0){
+      const nome = document.getElementById('nome');
+      if(!nome.value.trim()){ err.textContent = 'Campo obrigatório.'; nome.focus(); return false; }
+    }
+    if(i === 1){
+      if(!selection.tipo){ err.textContent = 'Selecione uma opção.'; return false; }
+    }
+    if(i === 2){
+      const local = document.getElementById('local');
+      if(!local.value.trim()){ err.textContent = 'Campo obrigatório.'; local.focus(); return false; }
+    }
+    if(i === 3){
+      if(!selection.desejaObservacao){ err.textContent = 'Selecione Sim ou Não.'; return false; }
+    }
+    if(i === 4){
+      // if this step is shown, textarea is optional — no validation required
+    }
+    return true;
   }
-  if(current<steps.length-1){current++;show();}
-  else enviar();
-};
 
-back.onclick=()=>{
-  if(current>0){current--;show();}
-};
+  nextBtn.addEventListener('click', ()=> {
+    // If on step 3 and choice is 'nao', jump to send
+    if(current === 3 && selection.desejaObservacao === 'nao'){ enviar(); return; }
 
-function enviar(){
-  const texto=encodeURIComponent(
-`Nome: ${nome.value}
-Projeto: ${tipoProjeto}
-Local: ${local.value}
-Observações: ${mensagem.value || 'Nenhuma'}`
-  );
-  window.open(`https://api.whatsapp.com/send?phone=5511994873720&text=${texto}`,'_blank');
-}
+    if(!validateStep(current)) return;
+
+    // proceed
+    if(current < steps.length - 1){
+      current++;
+      // if we moved to step index 4 but user chose 'nao' we shouldn't show it (but previous guard handles)
+      show(current);
+    } else {
+      // final step (this code path is reached if step 4 exists and user clicks Continue)
+      enviar();
+    }
+  });
+
+  backBtn.addEventListener('click', ()=> {
+    if(current > 0){ current--; show(current); }
+  });
+
+  // if user types message, store it
+  document.getElementById('mensagem').addEventListener('input', (e)=> selection.mensagem = e.target.value.trim());
+
+  function enviar(){
+    // final validation for mandatory steps
+    if(!validateStep(0) || !validateStep(1) || !validateStep(2) || !validateStep(3)) return;
+
+    const nome = document.getElementById('nome').value.trim();
+    const local = document.getElementById('local').value.trim();
+    const tipo = selection.tipo || '';
+    const desejaObs = selection.desejaObservacao || '';
+    const mensagem = selection.mensagem || (dessa = (desejaObs === 'nao' ? 'Nenhuma' : ''));
+
+    const lines = [
+      'Olá, gostaria de solicitar um orçamento de projeto.',
+      '',
+      'Nome: ' + nome,
+      'Tipo de projeto: ' + tipo,
+      'Local do projeto: ' + local,
+      'Deseja adicionar observação: ' + (desejaObs === 'sim' ? 'Sim' : 'Não'),
+      'Observações: ' + (mensagem || 'Nenhuma')
+    ];
+
+    const text = encodeURIComponent(lines.join('\n'));
+    const phone = '5511994873720';
+
+    // show thank you, hide form
+    form.style.display = 'none';
+    thank.hidden = false;
+    window.open('https://api.whatsapp.com/send?phone=' + phone + '&text=' + text, '_blank');
+  }
+
+  // show/skip textarea logic: whenever selection.desejaObservacao changes to 'sim' show step 4
+  // if 'nao' ensure step 4 hidden
+  const observer = new MutationObserver(()=>{
+    // update visibility of step 4 based on selection
+    const step4 = steps.find(s=>Number(s.dataset.step)===4);
+    if(selection.desejaObservacao === 'sim'){
+      // make sure step 4 exists and can be navigated to
+      // if currently on step 3 and user chose sim, advance to step 4
+      if(current === 3) { current = 4; show(current); }
+    } else {
+      if(step4) step4.hidden = true;
+    }
+  });
+  // observe changes in 'selection' indirectly via clicks handled above (no direct proxy), but call observer manually
+  // Simplify: after clicking options for step 3 we already set selection.desejaObservacao; handle immediate navigation there
+  document.querySelectorAll('[data-step="3"] .option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.dataset.value === 'sim'){
+        // move next to textarea automatically
+        current = 4;
+        show(current);
+      } else if(opt.dataset.value === 'nao'){
+        // call enviar directly
+        enviar();
+      }
+    });
+  });
+
+  // Enter key to advance (not in textarea)
+  form.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){
+      const activeTag = document.activeElement.tagName.toLowerCase();
+      if(activeTag === 'textarea') return;
+      e.preventDefault();
+      nextBtn.click();
+    }
+  });
+
+})();
 </script>
 </body>
 </html>
