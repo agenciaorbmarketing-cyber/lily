@@ -3,91 +3,109 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lily Zemuner · Arquitetura de Alto Padrão</title>
-<meta name="description" content="Projetos autorais e atemporais. Lily Zemuner — arquitetura e interiores de alto padrão.">
+<title>Lily Zemuner · Arquitetura e Interiores</title>
+<meta name="description" content="Lily Zemuner — projetos residenciais de alto padrão. Projetos autorais, sensibilidade e atenção ao detalhe.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf7f4;
-  --panel:#ffffff;
-  --muted:#7a746c;
-  --accent:#b68f59;
-  --accent-2:#7f5e38;
-  --dark:#24221f;
-  --radius:14px;
-  --max-width:1100px;
-  --gap:26px;
+  --bg:#f6f3ef;
+  --card:#ffffff;
+  --muted:#6f6a63;
+  --accent:#b08a55;
+  --accent-2:#8f6d3f;
+  --dark:#22201d;
+  --radius:20px;
+  --max-width:1080px;
+  --gap:28px;
   --transition:220ms ease;
 }
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  background:linear-gradient(180deg,#fbf8f5,#f5f1ee);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:linear-gradient(180deg,#fbf8f5 0%, #f5f1ee 100%);
   color:var(--dark);
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   line-height:1.45;
-  padding:0;
 }
-.wrapper{max-width:var(--max-width);margin:0 auto;padding:28px;}
-header{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:28px;}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--dark)}
 .brand img{height:48px;display:block}
+.brand .brand-text{font-family:"Playfair Display",serif;font-size:18px;font-weight:600;color:var(--dark)}
+
 nav{display:flex;gap:16px;align-items:center}
 nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px}
-.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700}
+nav a:hover{color:var(--dark)}
 
-.hero{position:relative;display:grid;grid-template-columns:1fr 480px;gap:var(--gap);align-items:stretch;margin-top:10px}
-.hero-left{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));padding:42px;border-radius:18px;box-shadow:0 18px 40px rgba(17,15,14,0.06)}
+.btn{
+  padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
+}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 10px 30px rgba(125,92,56,0.12)}
+.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--dark)}
+
+.hero{
+  display:grid;grid-template-columns:1fr 480px;gap:var(--gap);align-items:stretch;margin-top:18px;
+}
+.hero-left{
+  background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+  border-radius:var(--radius);
+  padding:44px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.06);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .eyebrow{font-size:13px;color:var(--accent-2);font-weight:700;letter-spacing:.4px}
-h1{font-family:"Playfair Display",serif;font-size:40px;margin:8px 0 12px}
-.lead{color:var(--muted);max-width:58ch}
+h1{font-family:"Playfair Display",serif;font-size:40px;margin:10px 0 12px}
+.lead{color:var(--muted);max-width:60ch;font-size:16px}
 
-.hero-right{position:relative;border-radius:18px;overflow:hidden;min-height:360px;box-shadow:0 30px 60px rgba(22,20,18,0.06);display:flex;align-items:center;justify-content:center}
-.hero-right img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-actions{margin-top:18px;display:flex;gap:12px;align-items:center}
 
-/* Projects */
-.section{margin-top:42px}
-.section h2{font-family:"Playfair Display",serif;font-size:22px;margin:0 0 10px}
-.projects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
-.project{position:relative;border-radius:12px;overflow:hidden;min-height:160px;background:#ece8e4;display:flex;align-items:flex-end;justify-content:flex-start;cursor:pointer;text-decoration:none;color:inherit}
-.project img{width:100%;height:100%;object-fit:cover;display:block;transition:transform var(--transition)}
-.project:hover img{transform:scale(1.04)}
-.project .meta{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,0.92);padding:8px 10px;border-radius:10px;font-weight:700;font-size:13px}
+/* Hero image card */
+.hero-right{border-radius:var(--radius);overflow:hidden;min-height:360px;box-shadow:0 30px 60px rgba(22,20,18,0.06);display:flex;align-items:center;justify-content:center;background:#ece8e4}
+.hero-right img{width:100%;height:100%;object-fit:cover;display:block; /* prefer face slightly higher in crop */ object-position:center 30%}
 
-/* Contact small */
-.contact-row{display:flex;gap:12px;align-items:center;margin-top:16px}
+/* Sections */
+.section{margin-top:44px}
+.section h2{font-family:"Playfair Display",serif;font-size:22px;margin:0 0 6px}
+.section p.lead{color:var(--muted);margin:6px 0 0 0}
+
+/* Contact row */
+.contact-row{display:flex;gap:12px;align-items:center;margin-top:12px}
 
 /* Footer */
 footer{margin-top:34px;padding:20px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
 
-/* Responsive */
-@media (max-width:1024px){
-  .hero{grid-template-columns:1fr}
-  .projects-grid{grid-template-columns:repeat(2,1fr)}
-  header{padding:12px 0}
+/* small screens adjustments to keep face visible */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding:0}
+  .hero-right{min-height:300px}
+  .hero-right img{object-position:center 28%}
 }
-@media (max-width:640px){
-  .wrapper{padding:12px}
+@media (max-width:560px){
   h1{font-size:28px}
-  .projects-grid{grid-template-columns:1fr}
-  .hero-right{min-height:220px}
+  .hero-left{padding:28px}
+  .hero-right img{object-position:center 20%}
 }
 </style>
 </head>
 <body>
-<div class="wrapper" role="main">
+<div class="container" role="main">
 
   <header>
-    <a class="brand" href="index.html" aria-label="Lily Zemuner home">
-      <img id="logoImg" src="assets/images/logo.png" alt="Lily Zemuner" />
+    <a class="brand" href="index.html" aria-label="Lily Zemuner — Home">
+      <img id="logo" src="assets/images/logo.png" alt="Lily Zemuner">
+      <span class="brand-text" aria-hidden="true" style="display:none">Lily Zemuner</span>
     </a>
 
-    <nav aria-label="Menu principal">
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-      <a id="cta-orcamento" class="cta" href="formulario.html">Solicitar Orçamento</a>
+    <nav aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a id="ver-port" class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
+      <a class="btn btn-primary" href="formulario.html" id="solicitar-orcamento">Solicitar Orçamento</a>
     </nav>
   </header>
 
@@ -96,52 +114,30 @@ footer{margin-top:34px;padding:20px 0;color:var(--muted);display:flex;justify-co
       <div class="hero-left">
         <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
         <h1>Lily Zemuner — projetos com alma e precisão</h1>
-        <p class="lead">Transformamos espaços residenciais em ambientes autorais que unem conforto, funcionalidade e estética atemporal.</p>
-        <div style="margin-top:18px">
-          <a class="cta" id="cta-orcamento-2" href="formulario.html">Solicitar Orçamento</a>
-          <a style="margin-left:12px;text-decoration:none;color:var(--muted)" href="#projetos">Ver Portfólio</a>
+        <p class="lead">Projetos residenciais autorais que unem estética atemporal, função e conforto. Serviços personalizados para clientes que buscam sofisticação e atenção ao detalhe.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
         </div>
       </div>
 
       <div class="hero-right" aria-hidden="false">
-        <img id="heroImg" src="assets/images/hero.jpg" alt="Lily Zemuner em biblioteca — fotografia institucional">
+        <img id="heroImage" src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional em biblioteca">
       </div>
     </section>
 
-    <section id="projetos" class="section" aria-label="Projetos">
-      <h2>Projetos</h2>
-      <p style="color:var(--muted);margin-top:6px">Clique em qualquer imagem para ver o projeto no Instagram.</p>
-
-      <div class="projects-grid" role="list">
-        <a class="project" role="listitem" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">
-          <img src="assets/images/thumb_01.jpg" alt="Projeto - sala de estar">
-          <div class="meta">Residencial · Sala</div>
-        </a>
-
-        <a class="project" role="listitem" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">
-          <img src="assets/images/thumb_02.jpg" alt="Projeto - cozinha">
-          <div class="meta">Residencial · Cozinha</div>
-        </a>
-
-        <a class="project" role="listitem" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">
-          <img src="assets/images/thumb_03.jpg" alt="Projeto - quarto">
-          <div class="meta">Residencial · Quarto</div>
-        </a>
-
-        <a class="project" role="listitem" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">
-          <img src="assets/images/thumb_04.jpg" alt="Projeto - área social">
-          <div class="meta">Residencial · Área social</div>
-        </a>
-      </div>
+    <section id="sobre" class="section" aria-label="Sobre">
+      <h2>Sobre</h2>
+      <p class="lead">Arquiteta especializada em residências de alto padrão. Trabalho autoral com foco em durabilidade estética, soluções funcionais e seleção criteriosa de materiais.</p>
     </section>
 
     <section id="contato" class="section" aria-label="Contato">
       <h2>Contato</h2>
-      <p style="color:var(--muted);margin-top:6px">Converse com Lily e agende uma conversa.</p>
-
+      <p class="lead">Agende uma conversa para avaliar seu projeto.</p>
       <div class="contact-row">
-        <a class="cta" href="https://wa.me/5511994873720?text=Ol%C3%A1%20Lily%2C%20gostaria%20de%20informacoes" target="_blank" rel="noopener">WhatsApp</a>
-        <a style="text-decoration:none;color:var(--muted)" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">@lilyzemuner.arquiteta</a>
+        <a class="btn btn-primary" href="https://wa.me/5511994873720?text=Ol%C3%A1%20Lily,%20gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:contato@lilyzemuner.com">E-mail</a>
       </div>
     </section>
   </main>
@@ -153,54 +149,41 @@ footer{margin-top:34px;padding:20px 0;color:var(--muted);display:flex;justify-co
 </div>
 
 <script>
-/* UX fixes and fallbacks */
-
-// year
+/* small runtime checks & fallbacks (no network calls) */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ensure CTA works even if browser blocks anchors in some contexts
-document.querySelectorAll('#cta-orcamento, #cta-orcamento-2').forEach(btn=>{
-  btn.addEventListener('click', function(e){
-    // default is relative link to formulario.html
-    // allow normal navigation
-  });
-});
-
-// image load fallback: replace missing images with a neutral background + text
-function fallbackImage(imgEl, label){
-  imgEl.style.objectFit = 'cover';
-  imgEl.style.background = '#e9e6e2';
-  imgEl.src = '';
-  imgEl.alt = label;
-  // add subtle placeholder overlay if needed
-}
-
-// logo fallback
-const logo = document.getElementById('logoImg');
+/* Logo fallback -> if missing, replace with text */
+const logo = document.getElementById('logo');
 logo.addEventListener('error', ()=> {
-  console.warn('Logo not found at assets/images/logo.png — confirme o nome e caminho (case-sensitive).');
-  // replace with text node
   const parent = logo.parentElement;
   logo.remove();
-  const span = document.createElement('span');
-  span.style.fontWeight = '700';
-  span.style.fontFamily = 'Playfair Display, serif';
-  span.textContent = 'Lily Zemuner';
-  parent.appendChild(span);
+  const t = document.createElement('span');
+  t.style.fontFamily = "Playfair Display, serif";
+  t.style.fontWeight = 700;
+  t.style.fontSize = "18px";
+  t.textContent = "Lily Zemuner";
+  parent.appendChild(t);
 });
 
-// hero fallback
-const hero = document.getElementById('heroImg');
+/* Hero image fallback */
+const hero = document.getElementById('heroImage');
 hero.addEventListener('error', ()=> {
-  console.warn('Hero image not found at assets/images/hero.jpg — confirme o nome e caminho (case-sensitive).');
-  fallbackImage(hero, 'Foto institucional');
+  console.warn('Hero image not found at assets/images/hero.jpg — verifique nome/case-sensitive.');
+  hero.style.objectFit = 'contain';
+  hero.style.background = '#e9e6e2';
+  hero.alt = 'Foto institucional';
 });
 
-// thumbnails fallback
-document.querySelectorAll('.projects-grid img').forEach(img=>{
-  img.addEventListener('error', ()=> {
-    console.warn('Project thumb missing:', img.getAttribute('src'));
-    fallbackImage(img, 'Projeto');
+/* Ensure "Solicitar Orçamento" is a normal navigation link — nothing to override */
+/* Smooth scroll for internal anchors */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href.length>1){
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
   });
 });
 </script>
