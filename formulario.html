@@ -19,20 +19,20 @@
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--ink);padding:28px}
-.container{max-width:var(--max);margin:24px auto;background:var(--card);border-radius:14px;padding:28px;box-shadow:0 24px 60px rgba(17,15,14,0.06)}
+.container{max-width:var(--max);margin:24px auto;background:var(--card);border-radius:14px;padding:28px;box-shadow:0 18px 40px rgba(0,0,0,0.05)}
 .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .header .brand{display:flex;align-items:center;gap:12px}
 .header img{height:40px}
 h1{font-family:"Playfair Display",serif;margin:0 0 6px;font-size:26px}
 .lead{color:var(--muted);margin-bottom:18px}
 
-/* steps */
+/* steps indicator */
 .steps{display:flex;gap:8px;margin-bottom:18px}
 .step-ind{flex:1;height:6px;background:#efeae5;border-radius:6px}
 .step-ind.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
 
-/* step card */
-.step-card{background:#fff;border-radius:12px;padding:18px;border:1px solid #f0ebe6}
+/* card / fields */
+.step-card{background:#fff;border-radius:12px;padding:18px;border:1px solid #f0ebe6;margin-bottom:12px}
 label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
 .input, textarea, select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e7e1da;font-size:15px;background:#fff}
 .radio-grid{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap}
@@ -45,16 +45,12 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
 .btn{padding:12px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700}
 .btn-ghost{background:none;color:var(--muted);border:1px solid rgba(0,0,0,0.04)}
 .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
-
-/* thankyou */
 .thank{display:none;text-align:center;padding:18px}
-
-/* responsive */
-@media(max-width:640px){.header img{height:36px}.container{padding:20px}}
+@media(max-width:640px){body{padding:18px}.container{padding:18px}}
 </style>
 </head>
 <body>
-<div class="container" role="main">
+<div class="container" role="main" aria-labelledby="formTitle">
   <div class="header">
     <div class="brand">
       <img src="assets/images/logo.png" alt="Lily Zemuner">
@@ -63,7 +59,7 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
     <a href="index.html" style="text-decoration:none;color:var(--muted)">Voltar</a>
   </div>
 
-  <h1>Solicitar Orçamento</h1>
+  <h1 id="formTitle">Solicitar Orçamento</h1>
   <p class="lead">Preencha as etapas. Ao finalizar você será redirecionado ao WhatsApp com as informações.</p>
 
   <div class="steps" aria-hidden="true">
@@ -71,6 +67,8 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
     <div class="step-ind" data-index="1"></div>
     <div class="step-ind" data-index="2"></div>
     <div class="step-ind" data-index="3"></div>
+    <div class="step-ind" data-index="4"></div>
+    <div class="step-ind" data-index="5"></div>
   </div>
 
   <form id="form" novalidate>
@@ -98,8 +96,20 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
       <div class="err" aria-live="polite"></div>
     </div>
 
-    <!-- STEP 3: deseja observacao -->
+    <!-- STEP 3: investimento (nova etapa) -->
     <div class="step-card" data-step="3" hidden>
+      <label>Faixa de investimento estimado</label>
+      <div class="radio-grid" role="radiogroup" aria-label="Faixa de investimento estimado">
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Menos de R$ 500 mil">Menos de R$ 500 mil</div>
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 500 mil a R$ 1 milhão">R$ 500 mil a R$ 1 milhão</div>
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 1 milhão a R$ 5 milhões">R$ 1 milhão a R$ 5 milhões</div>
+        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Mais de R$ 5 milhões">Mais de R$ 5 milhões</div>
+      </div>
+      <div class="err" aria-live="polite"></div>
+    </div>
+
+    <!-- STEP 4: deseja observacao -->
+    <div class="step-card" data-step="4" hidden>
       <label>Deseja adicionar alguma observação?</label>
       <div class="radio-grid" role="radiogroup" aria-label="Adicionar observação">
         <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="sim">Sim</div>
@@ -108,8 +118,8 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
       <div class="err" aria-live="polite"></div>
     </div>
 
-    <!-- STEP 4: textarea (conditional) -->
-    <div class="step-card" data-step="4" hidden>
+    <!-- STEP 5: textarea (conditional) -->
+    <div class="step-card" data-step="5" hidden>
       <label for="mensagem">Observações</label>
       <textarea id="mensagem" class="input" rows="5" placeholder="Digite sua observação"></textarea>
       <div class="err" aria-live="polite"></div>
@@ -129,7 +139,6 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
 </div>
 
 <script>
-/* Multi-step logic with card-selection highlighting and conditional textarea */
 (function(){
   const steps = Array.from(document.querySelectorAll('[data-step]'));
   const indicators = Array.from(document.querySelectorAll('.step-ind'));
@@ -139,12 +148,11 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
   const form = document.getElementById('form');
 
   let current = 0;
-  let selection = { tipo: '', desejaObservacao: '', mensagem: '' };
+  const selection = { tipo:'', investimento:'', desejaObservacao:'', mensagem:'' };
 
   function show(i){
     steps.forEach(s => s.hidden = Number(s.dataset.step) !== i);
     indicators.forEach((ind, idx)=> ind.classList.toggle('active', idx <= i));
-    // focus first focusable
     const focusable = steps[i].querySelector('input, textarea, .option, select');
     if(focusable) focusable.focus();
     backBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
@@ -152,9 +160,8 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
   }
   show(0);
 
-  // option click handler (delegated)
+  // option click handler (for all option cards)
   document.querySelectorAll('.option').forEach(opt=>{
-    // click
     opt.addEventListener('click', ()=> {
       const group = opt.parentNode;
       group.querySelectorAll('.option').forEach(o => {
@@ -164,14 +171,14 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
       opt.classList.add('active');
       opt.setAttribute('aria-checked','true');
 
-      // assign value based on which step group we're in
       const stepCard = opt.closest('[data-step]');
       const stepIdx = Number(stepCard.dataset.step);
       const val = opt.dataset.value;
       if(stepIdx === 1) selection.tipo = val;
-      if(stepIdx === 3) selection.desejaObservacao = val;
+      if(stepIdx === 3) selection.investimento = val;
+      if(stepIdx === 4) selection.desejaObservacao = val;
     });
-    // keyboard support
+
     opt.addEventListener('keydown', (e)=> {
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault(); opt.click();
@@ -183,7 +190,6 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
     const stepCard = steps.find(s => Number(s.dataset.step) === i);
     const err = stepCard.querySelector('.err');
     err.textContent = '';
-    // step-specific validation
     if(i === 0){
       const nome = document.getElementById('nome');
       if(!nome.value.trim()){ err.textContent = 'Campo obrigatório.'; nome.focus(); return false; }
@@ -196,27 +202,26 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
       if(!local.value.trim()){ err.textContent = 'Campo obrigatório.'; local.focus(); return false; }
     }
     if(i === 3){
-      if(!selection.desejaObservacao){ err.textContent = 'Selecione Sim ou Não.'; return false; }
+      if(!selection.investimento){ err.textContent = 'Selecione uma faixa de investimento.'; return false; }
     }
     if(i === 4){
-      // if this step is shown, textarea is optional — no validation required
+      if(!selection.desejaObservacao){ err.textContent = 'Selecione Sim ou Não.'; return false; }
     }
+    // step 5 (textarea) optional
     return true;
   }
 
   nextBtn.addEventListener('click', ()=> {
-    // If on step 3 and choice is 'nao', jump to send
-    if(current === 3 && selection.desejaObservacao === 'nao'){ enviar(); return; }
+    // If on step 4 and user already chose 'nao', send immediately (skip textarea)
+    if(current === 4 && selection.desejaObservacao === 'nao'){ enviar(); return; }
 
     if(!validateStep(current)) return;
 
-    // proceed
     if(current < steps.length - 1){
       current++;
-      // if we moved to step index 4 but user chose 'nao' we shouldn't show it (but previous guard handles)
       show(current);
+      return;
     } else {
-      // final step (this code path is reached if step 4 exists and user clicks Continue)
       enviar();
     }
   });
@@ -225,18 +230,31 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
     if(current > 0){ current--; show(current); }
   });
 
-  // if user types message, store it
+  // update mensagem on input
   document.getElementById('mensagem').addEventListener('input', (e)=> selection.mensagem = e.target.value.trim());
 
+  // If user chooses "Sim" at the observaçao step, immediately navigate to textarea
+  document.querySelectorAll('[data-step="4"] .option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(opt.dataset.value === 'sim'){
+        current = 5;
+        show(current);
+      } else if(opt.dataset.value === 'nao'){
+        enviar();
+      }
+    });
+  });
+
   function enviar(){
-    // final validation for mandatory steps
-    if(!validateStep(0) || !validateStep(1) || !validateStep(2) || !validateStep(3)) return;
+    // final validation of required steps
+    if(!validateStep(0) || !validateStep(1) || !validateStep(2) || !validateStep(3) || !validateStep(4)) return;
 
     const nome = document.getElementById('nome').value.trim();
     const local = document.getElementById('local').value.trim();
     const tipo = selection.tipo || '';
+    const investimento = selection.investimento || '';
     const desejaObs = selection.desejaObservacao || '';
-    const mensagem = selection.mensagem || (dessa = (desejaObs === 'nao' ? 'Nenhuma' : ''));
+    const mensagem = selection.mensagem || (desejaObs === 'nao' ? 'Nenhuma' : '');
 
     const lines = [
       'Olá, gostaria de solicitar um orçamento de projeto.',
@@ -244,6 +262,7 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
       'Nome: ' + nome,
       'Tipo de projeto: ' + tipo,
       'Local do projeto: ' + local,
+      'Faixa de investimento estimado: ' + investimento,
       'Deseja adicionar observação: ' + (desejaObs === 'sim' ? 'Sim' : 'Não'),
       'Observações: ' + (mensagem || 'Nenhuma')
     ];
@@ -251,50 +270,20 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:8px}
     const text = encodeURIComponent(lines.join('\n'));
     const phone = '5511994873720';
 
-    // show thank you, hide form
     form.style.display = 'none';
     thank.hidden = false;
     window.open('https://api.whatsapp.com/send?phone=' + phone + '&text=' + text, '_blank');
   }
 
-  // show/skip textarea logic: whenever selection.desejaObservacao changes to 'sim' show step 4
-  // if 'nao' ensure step 4 hidden
-  const observer = new MutationObserver(()=>{
-    // update visibility of step 4 based on selection
-    const step4 = steps.find(s=>Number(s.dataset.step)===4);
-    if(selection.desejaObservacao === 'sim'){
-      // make sure step 4 exists and can be navigated to
-      // if currently on step 3 and user chose sim, advance to step 4
-      if(current === 3) { current = 4; show(current); }
-    } else {
-      if(step4) step4.hidden = true;
-    }
-  });
-  // observe changes in 'selection' indirectly via clicks handled above (no direct proxy), but call observer manually
-  // Simplify: after clicking options for step 3 we already set selection.desejaObservacao; handle immediate navigation there
-  document.querySelectorAll('[data-step="3"] .option').forEach(opt=>{
-    opt.addEventListener('click', ()=>{
-      if(opt.dataset.value === 'sim'){
-        // move next to textarea automatically
-        current = 4;
-        show(current);
-      } else if(opt.dataset.value === 'nao'){
-        // call enviar directly
-        enviar();
-      }
-    });
-  });
-
-  // Enter key to advance (not in textarea)
+  // allow Enter to advance (not inside textarea)
   form.addEventListener('keydown', (e)=>{
     if(e.key === 'Enter'){
-      const activeTag = document.activeElement.tagName.toLowerCase();
-      if(activeTag === 'textarea') return;
+      const tag = document.activeElement.tagName.toLowerCase();
+      if(tag === 'textarea') return;
       e.preventDefault();
       nextBtn.click();
     }
   });
-
 })();
 </script>
 </body>
