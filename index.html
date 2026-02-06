@@ -34,20 +34,10 @@ body{
 .page{
   max-width:var(--max-width);
   margin:0 auto;
-  padding:36px 28px;
+  padding:28px 28px 36px;
 }
 
-.header{
-  display:flex;
-  align-items:center;
-  padding:6px 0 18px;
-}
-
-.brand img{
-  height:46px;
-  display:block;
-}
-
+/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1fr 480px;
@@ -58,7 +48,7 @@ body{
 .hero-card{
   background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.92));
   border-radius:var(--radius);
-  padding:52px;
+  padding:56px;
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
@@ -70,7 +60,7 @@ body{
   font-weight:700;
   letter-spacing:.6px;
   color:var(--accent-dark);
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
 
 .title{
@@ -128,6 +118,7 @@ body{
   color:var(--ink);
 }
 
+/* HERO IMAGE */
 .hero-visual{
   border-radius:var(--radius);
   overflow:hidden;
@@ -143,8 +134,9 @@ body{
   display:block;
 }
 
+/* SECTION */
 .section{
-  margin-top:42px;
+  margin-top:44px;
 }
 
 .section h2{
@@ -158,6 +150,7 @@ body{
   max-width:72ch;
 }
 
+/* FOOTER */
 .footer{
   margin-top:48px;
   display:flex;
@@ -166,9 +159,10 @@ body{
   font-size:14px;
 }
 
+/* RESPONSIVE */
 @media(max-width:980px){
   .hero{grid-template-columns:1fr}
-  .hero-card{padding:38px}
+  .hero-card{padding:40px}
   .hero-visual img{object-position:center 22%}
 }
 
@@ -177,7 +171,7 @@ body{
   .title,.subtitle{white-space:normal}
   .title{font-size:30px;line-height:1.08}
   .subtitle{font-size:16px}
-  .hero-card{padding:26px}
+  .hero-card{padding:28px}
   .hero-visual img{object-position:center 18%}
 }
 </style>
@@ -185,12 +179,6 @@ body{
 
 <body>
 <div class="page">
-
-<header class="header">
-  <a class="brand" href="index.html">
-    <img src="assets/images/logo.png" alt="Lily Zemuner">
-  </a>
-</header>
 
 <main>
 <section class="hero">
