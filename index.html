@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg: #fbf7f3;
-  --card: #ffffff;
-  --muted: #7a746c;
-  --accent: #b08a55;
-  --accent-dark: #8f6d3f;
-  --ink: #262320;
+  --bg:#fbf7f3;
+  --card:#ffffff;
+  --muted:#7a746c;
+  --accent:#b08a55;
+  --accent-dark:#8f6d3f;
+  --ink:#262320;
   --radius:20px;
   --max-width:1100px;
-  --shadow: 0 22px 54px rgba(20,18,16,0.06);
+  --shadow:0 22px 54px rgba(20,18,16,0.06);
   --gutter:28px;
 }
 
@@ -35,13 +35,10 @@ body{
 }
 
 /* Page container */
-.page{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:32px 28px;
-}
+.page{max-width:var(--max-width);margin:0 auto;padding:32px 28px}
 
-/* HERO (unchanged core layout) */
+/* HERO (no CTAs at top) */
+/* redesigned to be denser and balanced with image */
 .hero{
   display:grid;
   grid-template-columns:1fr 520px;
@@ -52,18 +49,19 @@ body{
 .hero-card{
   background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
   border-radius:var(--radius);
-  padding:48px;
+  padding:44px 44px;
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
   justify-content:center;
+  gap:16px;
 }
-.eyebrow{font-size:13px;color:var(--accent-dark);font-weight:700;letter-spacing:.5px;margin-bottom:12px}
+.eyebrow{font-size:13px;color:var(--accent-dark);font-weight:700;letter-spacing:.5px;margin-bottom:4px}
 .title{
   font-family:"Playfair Display",serif;
-  font-size:44px;
+  font-size:46px;
   font-weight:600;
-  line-height:1.06;
+  line-height:1.04;
   letter-spacing:-0.35px;
   margin:0;
   white-space:nowrap;
@@ -73,16 +71,20 @@ body{
   font-size:18px;
   font-weight:400;
   color:var(--muted);
-  margin:8px 0 16px;
+  margin:6px 0 10px;
   white-space:nowrap;
 }
-.lead{color:var(--muted);font-size:15px;max-width:68ch;margin-top:10px;line-height:1.55}
-.hero-actions{margin-top:24px;display:flex;gap:12px;align-items:center}
-.btn{
-  padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
+.lead{color:var(--muted);font-size:15px;max-width:66ch;line-height:1.6;}
+
+/* micro-invitation below hero to create visual weight */
+.hero-invite{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+  max-width:60ch;
 }
-.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(125,92,56,0.12)}
-.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink)}
+
+/* Hero visual */
 .hero-visual{
   border-radius:var(--radius);
   overflow:hidden;
@@ -95,9 +97,19 @@ body{
 }
 .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
 
-/* "Para quem é" */
-.who{
+/* Title for "Para quem é" */
+.who-intro{
   margin-top:28px;
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  color:var(--accent-dark);
+  letter-spacing:.4px;
+  margin-bottom:8px;
+}
+.who-sub{color:var(--muted);margin:0 0 14px 0;max-width:68ch}
+
+/* "Para quem é" cards */
+.who{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:18px;
@@ -110,121 +122,53 @@ body{
   box-shadow:0 12px 30px rgba(20,18,16,0.03);
 }
 .who-card h3{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:16px}
-.who-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
+.who-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
 
-/* MANIFESTO — new structured block */
-.manifesto-section{
-  margin-top:42px;
-}
+/* MANIFESTO — structured, equalized media/text */
+.manifesto-section{margin-top:38px}
 .manifesto-title{
   font-family:"Playfair Display",serif;
-  font-size:20px;
-  color:var(--accent-dark);
-  margin:0 0 12px 0;
-  letter-spacing:0.6px;
-  font-weight:700;
+  font-size:20px;color:var(--accent-dark);margin:0 0 12px 0;letter-spacing:.6px;font-weight:700;
 }
 
-/* Two-column manifesto layout */
-.manifesto-layout{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:24px;
-  align-items:start;
-}
+/* layout uses equal-height columns */
+.manifesto-layout{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:stretch}
 .manifesto-card{
   background:linear-gradient(180deg,#fff,#fbf9f7);
-  padding:26px;
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  border:1px solid rgba(0,0,0,0.02);
+  padding:26px;border-radius:14px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.02);display:flex;flex-direction:column;justify-content:space-between;
 }
-.manifesto-text{
-  font-family:Inter,system-ui;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.65;
-  max-width:64ch;
-  white-space:pre-wrap; /* preserve intentional line breaks if present */
-  margin:0;
-}
-/* stylized welcome line */
-.manifesto-welcome{
-  margin-top:18px;
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  color:var(--accent);
-  font-weight:600;
-  line-height:1.2;
-  display:inline-block;
-  padding-top:10px;
-  position:relative;
-}
-/* decorative rule above welcome */
-.manifesto-welcome::before{
-  content:"";
-  display:block;
-  height:1px;
-  width:64px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
-  margin-bottom:10px;
-}
+.manifesto-text{font-family:Inter,system-ui;color:var(--muted);font-size:15px;line-height:1.65;max-width:64ch;white-space:pre-wrap;margin:0}
+.manifesto-welcome{margin-top:20px;font-family:"Playfair Display",serif;font-size:18px;color:var(--accent);font-weight:600;line-height:1.18;display:inline-block;position:relative;padding-top:10px}
+.manifesto-welcome::before{content:"";display:block;height:1px;width:64px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));margin-bottom:10px}
 
-/* manifesto media (optional image) */
-.manifesto-media{
-  border-radius:12px;
-  overflow:hidden;
-  height:100%;
-  max-height:420px;
-  background:#efeae5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+/* manifesto media equal-height box */
+.manifesto-media{border-radius:12px;overflow:hidden;background:#efeae5;display:flex;align-items:center;justify-content:center;height:100%}
 .manifesto-media img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Steps intro and steps (keeps earlier styling but adds intro) */
-.steps-intro{
-  margin-top:36px;
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  color:var(--accent-dark);
-  margin-bottom:10px;
-}
-.steps-sub{color:var(--muted);margin:0 0 14px 0}
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-.step{
-  background:var(--card);
-  border-radius:12px;
-  padding:18px;
-  text-align:left;
-  border:1px solid rgba(0,0,0,0.03);
-  box-shadow:0 10px 26px rgba(20,18,16,0.03);
-}
-.step .num{
-  width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;
-}
+/* Steps intro */
+.steps-intro{margin-top:34px;font-family:"Playfair Display",serif;font-size:20px;color:var(--accent-dark);margin-bottom:6px}
+.steps-sub{color:var(--muted);margin:0 0 12px 0;max-width:68ch}
+
+/* Steps grid */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+.step{background:var(--card);border-radius:12px;padding:18px;text-align:left;border:1px solid rgba(0,0,0,0.03);box-shadow:0 10px 26px rgba(20,18,16,0.03)}
+.step .num{width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px}
 .step h4{margin:0 0 6px;font-family:"Playfair Display",serif;font-size:15px}
 .step p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
 
 /* Testimonial */
-.testimonial{
-  margin-top:36px;
-  background:linear-gradient(180deg,#fff,#fbf9f7);
-  border-radius:14px;padding:22px;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow);
-}
+.testimonial{margin-top:34px;background:linear-gradient(180deg,#fff,#fbf9f7);border-radius:14px;padding:22px;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow)}
 .testimonial p{font-family:"Playfair Display",serif;font-size:18px;color:var(--ink);margin:0 0 10px;line-height:1.35}
 .testimonial .who{color:var(--muted);font-weight:700}
 
-/* Final CTA & Footer */
-.final-cta{margin-top:30px;display:flex;gap:14px;align-items:center}
+/* Final CTA (only here) */
+.final-intro{margin-top:28px;color:var(--muted);max-width:68ch;font-size:15px;margin-bottom:12px}
+.final-cta{margin-top:12px;display:flex;gap:14px;align-items:center}
+
+/* Footer */
 .footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between}
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;gap:20px}
   .who{grid-template-columns:1fr}
@@ -242,8 +186,7 @@ body{
 </head>
 <body>
   <div class="page" role="main">
-
-    <!-- HERO -->
+    <!-- HERO (no top CTAs) -->
     <section class="hero" aria-label="Apresentação">
       <div class="hero-card" aria-labelledby="hero-title">
         <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
@@ -252,10 +195,7 @@ body{
 
         <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
 
-        <div class="hero-actions" role="region" aria-label="Ações principais">
-          <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
-        </div>
+        <div class="hero-invite">Uma experiência editorial do projeto ao acabamento — para quem busca rigor técnico e sensibilidade estética.</div>
       </div>
 
       <div class="hero-visual" aria-hidden="false">
@@ -263,25 +203,30 @@ body{
       </div>
     </section>
 
-    <!-- PARA QUEM É -->
-    <section class="who" aria-label="Para quem é">
-      <div class="who-card" role="article">
-        <h3>Quem está construindo ou reformando</h3>
-        <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
-      </div>
+    <!-- "Para quem é" with title -->
+    <section aria-label="Para quem é">
+      <div class="who-intro">Para quem buscamos projetar</div>
+      <p class="who-sub">Uma prática voltada a clientes que valorizam planejamento, identidade e resultado duradouro.</p>
 
-      <div class="who-card" role="article">
-        <h3>Quem valoriza projeto autoral e acabamento</h3>
-        <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
-      </div>
+      <div class="who" role="list">
+        <div class="who-card" role="listitem">
+          <h3>Quem está construindo ou reformando</h3>
+          <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
+        </div>
 
-      <div class="who-card" role="article">
-        <h3>Quem entende arquitetura como investimento</h3>
-        <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
+        <div class="who-card" role="listitem">
+          <h3>Quem valoriza projeto autoral e acabamento</h3>
+          <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
+        </div>
+
+        <div class="who-card" role="listitem">
+          <h3>Quem entende arquitetura como investimento</h3>
+          <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
+        </div>
       </div>
     </section>
 
-    <!-- MANIFESTO (with optional media) -->
+    <!-- MANIFESTO (equalized media/text) -->
     <section class="manifesto-section" aria-label="Manifesto">
       <h3 class="manifesto-title">Manifesto</h3>
 
@@ -294,7 +239,7 @@ Nossos projetos nascem do encontro entre funcionalidade, sofisticação e sensib
 Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso escutar o que não é dito, traduzir sensações e unir ergonomia, conforto e elegância para criar ambientes que acolhem, emocionam e revelam identidade em cada detalhe.
           </p>
 
-          <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <span style="font-weight:700">Lily Zemuner</span></div>
+          <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <strong>Lily Zemuner</strong></div>
         </div>
 
         <div class="manifesto-media" aria-hidden="true">
@@ -304,13 +249,12 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
       </div>
     </section>
 
-    <!-- COMO FUNCIONA intro -->
-    <div style="margin-top:38px">
+    <!-- Steps intro + steps -->
+    <div style="margin-top:36px">
       <div class="steps-intro">Os passos que adotamos na sua reforma</div>
       <p class="steps-sub">Um processo claro, artesanal e pensado para alto padrão.</p>
     </div>
 
-    <!-- COMO FUNCIONA (4 steps) -->
     <section class="steps" aria-label="Como funciona">
       <div class="step" role="article">
         <div class="num">1</div>
@@ -340,7 +284,9 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
       <div class="who">— Mariana Alves</div>
     </section>
 
-    <!-- CTA final -->
+    <!-- Final copy then CTAs (only here) -->
+    <div class="final-intro">Se fizer sentido para você, o próximo passo é iniciar uma conversa. Preencha o formulário e teremos o prazer de avaliar seu projeto.</div>
+
     <div class="final-cta" role="region" aria-label="Chamada final">
       <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
       <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
@@ -353,14 +299,12 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
   </div>
 
 <script>
-/* runtime housekeeping */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* manifesto image fallback note in console; file expected: assets/images/manifesto.jpg (case-sensitive) */
 const mImg = document.getElementById('manifestoImg');
 mImg.addEventListener('error', ()=> {
   console.warn('Manifesto image missing: assets/images/manifesto.jpg (case-sensitive). If you want the image, upload it with this exact name.');
-  // keep the empty box background as visual ornament
 });
 </script>
 </body>
