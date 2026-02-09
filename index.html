@@ -1,371 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lily Zemuner — Projetos com alma e afeto</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lily Zemuner — projetos com alma e afeto</title>
+<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #fbf7f3;
+  --card: #ffffff;
+  --muted: #7a746c;
+  --accent: #b08a55;
+  --accent-dark: #8f6d3f;
+  --ink: #262320;
+  --radius:20px;
+  --max-width:1100px;
+  --shadow: 0 22px 54px rgba(20,18,16,0.06);
+  --gutter:28px;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+/* Reset & base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:linear-gradient(180deg,var(--bg),#f4f1ed);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  -webkit-text-size-adjust:100%;
+}
 
-  <style>
-    :root {
-      --bg: #f6f4f1;
-      --text: #2b2b2b;
-      --muted: #6f6f6f;
-      --accent: #b09a7a;
-      --card: #ffffff;
-    }
+/* Page container */
+.page{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:32px 28px;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* HERO (unchanged core layout, actions removed) */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 520px;
+  gap:var(--gutter);
+  align-items:stretch;
+  margin:6px 0 24px 0;
+}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+  border-radius:var(--radius);
+  padding:48px;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.eyebrow{font-size:13px;color:var(--accent-dark);font-weight:700;letter-spacing:.5px;margin-bottom:12px}
+.title{
+  font-family:"Playfair Display",serif;
+  font-size:44px;
+  font-weight:600;
+  line-height:1.06;
+  letter-spacing:-0.35px;
+  margin:0;
+  white-space:nowrap;
+}
+.subtitle{
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+  font-weight:400;
+  color:var(--muted);
+  margin:8px 0 16px;
+  white-space:nowrap;
+}
+.lead{color:var(--muted);font-size:15px;max-width:68ch;margin-top:10px;line-height:1.55}
+/* removed hero-actions from top to make hero purely institutional */
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+.btn{
+  padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
+}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(125,92,56,0.12)}
+.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink)}
+.hero-visual{
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  min-height:420px;
+  background:#ece8e4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
 
-    section {
-      padding: 96px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+/* Section title for "Para quem é" */
+.who-title{
+  margin-top:28px;
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  color:var(--accent-dark);
+  letter-spacing:0.6px;
+  font-weight:700;
+}
 
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-    }
+/* "Para quem é" cards */
+.who{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.who-card{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  border:1px solid rgba(0,0,0,0.03);
+  box-shadow:0 12px 30px rgba(20,18,16,0.03);
+}
+.who-card h3{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:16px}
+.who-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
 
-    h2.section-title {
-      font-size: 40px;
-      margin-bottom: 16px;
-    }
+/* MANIFESTO — structured block */
+.manifesto-section{
+  margin-top:42px;
+}
+.manifesto-title{
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  color:var(--accent-dark);
+  margin:0 0 12px 0;
+  letter-spacing:0.6px;
+  font-weight:700;
+}
 
-    p.section-subtitle {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 16px;
-    }
+/* Two-column manifesto layout */
+.manifesto-layout{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:24px;
+  align-items:start;
+}
+.manifesto-card{
+  background:linear-gradient(180deg,#fff,#fbf9f7);
+  padding:26px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(0,0,0,0.02);
+}
+.manifesto-text{
+  font-family:Inter,system-ui;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.65;
+  max-width:64ch;
+  white-space:pre-wrap;
+  margin:0;
+}
+/* stylized welcome line */
+.manifesto-welcome{
+  margin-top:18px;
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+  color:var(--accent);
+  font-weight:600;
+  line-height:1.2;
+  display:inline-block;
+  padding-top:10px;
+  position:relative;
+}
+.manifesto-welcome::before{
+  content:"";
+  display:block;
+  height:1px;
+  width:64px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+  margin-bottom:10px;
+}
 
-    /* HERO */
+/* manifesto media (optional image) */
+.manifesto-media{
+  border-radius:12px;
+  overflow:hidden;
+  height:100%;
+  max-height:420px;
+  background:#efeae5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.manifesto-media img{width:100%;height:100%;object-fit:cover;display:block}
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 64px;
-      align-items: center;
-      padding-top: 120px;
-    }
+/* Steps intro and steps */
+.steps-intro{
+  margin-top:36px;
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  color:var(--accent-dark);
+  margin-bottom:10px;
+}
+.steps-sub{color:var(--muted);margin:0 0 14px 0}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.step{
+  background:var(--card);
+  border-radius:12px;
+  padding:18px;
+  text-align:left;
+  border:1px solid rgba(0,0,0,0.03);
+  box-shadow:0 10px 26px rgba(20,18,16,0.03);
+}
+.step .num{
+  width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;
+}
+.step h4{margin:0 0 6px;font-family:"Playfair Display",serif;font-size:15px}
+.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
 
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
+/* Testimonial */
+.testimonial{
+  margin-top:36px;
+  background:linear-gradient(180deg,#fff,#fbf9f7);
+  border-radius:14px;padding:22px;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow);
+}
+.testimonial p{font-family:"Playfair Display",serif;font-size:18px;color:var(--ink);margin:0 0 10px;line-height:1.35}
+.testimonial .who{color:var(--muted);font-weight:700}
 
-    .hero h1 span {
-      display: block;
-      font-size: 22px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-    }
+/* Final CTA & Footer */
+.final-cta{margin-top:30px;display:flex;gap:14px;align-items:center}
+.footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between}
 
-    .hero p {
-      max-width: 520px;
-      margin-top: 24px;
-      color: var(--muted);
-    }
-
-    .hero img {
-      width: 100%;
-      border-radius: 24px;
-    }
-
-    /* MANIFESTO */
-
-    .manifesto {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .manifesto h2 {
-      font-size: 38px;
-      margin-bottom: 32px;
-    }
-
-    .manifesto p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .welcome {
-      margin-top: 32px;
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: var(--accent);
-    }
-
-    .manifesto img {
-      width: 100%;
-      border-radius: 24px;
-    }
-
-    /* PARA QUEM É */
-
-    .audience-header {
-      margin-bottom: 48px;
-    }
-
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .audience-card {
-      background: var(--card);
-      padding: 32px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    }
-
-    .audience-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .audience-card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* PROCESSO */
-
-    .process-header {
-      margin-bottom: 48px;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-    }
-
-    .process-step {
-      background: var(--card);
-      padding: 32px;
-      border-radius: 20px;
-    }
-
-    .process-step span {
-      font-size: 14px;
-      color: var(--accent);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .process-step h3 {
-      margin: 12px 0;
-      font-size: 22px;
-    }
-
-    .process-step p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* DEPOIMENTO */
-
-    .testimonial {
-      text-align: center;
-      max-width: 760px;
-    }
-
-    .testimonial p {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      line-height: 1.4;
-      margin-bottom: 24px;
-    }
-
-    .testimonial span {
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-    }
-
-    /* CTA FINAL */
-
-    .final-cta {
-      text-align: center;
-      padding-bottom: 140px;
-    }
-
-    .final-cta h2 {
-      font-size: 40px;
-      margin-bottom: 24px;
-    }
-
-    .final-cta .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      border-radius: 999px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      transition: all 0.3s ease;
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn:hover {
-      opacity: 0.85;
-    }
-
-    /* RESPONSIVO */
-
-    @media (max-width: 900px) {
-      .hero,
-      .manifesto,
-      .audience-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      h2.section-title {
-        font-size: 34px;
-      }
-    }
-
-  </style>
+/* Responsive adjustments */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:20px}
+  .who{grid-template-columns:1fr}
+  .manifesto-layout{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .hero-visual{min-height:320px}
+}
+@media (max-width:560px){
+  .page{padding:20px}
+  .title{font-size:30px;white-space:normal}
+  .subtitle{font-size:16px;white-space:normal}
+  .steps{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
+  <div class="page" role="main">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>
-        Lily Zemuner
-        <span>projetos com alma e afeto</span>
-      </h1>
-      <p>
-        Arquitetura autoral que une sofisticação, sensibilidade e propósito para transformar espaços em experiências.
-      </p>
-    </div>
-    <img src="hero.jpg" alt="Projeto Lily Zemuner">
-  </section>
+    <!-- HERO -->
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero-card" aria-labelledby="hero-title">
+        <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+        <span class="title" id="hero-title">Lily Zemuner</span>
+        <span class="subtitle">projetos com alma e afeto</span>
 
-  <!-- MANIFESTO -->
-  <section class="manifesto">
-    <div>
-      <h2>Manifesto</h2>
-      <p>Há mais de 20 anos, transformo espaços em narrativas silenciosas, onde cada escolha carrega intenção, memória e afeto.</p>
-      <p>Nossos projetos nascem do encontro entre funcionalidade, sofisticação e sensibilidade.</p>
-      <p>Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso escutar o que não é dito, traduzir sensações e unir ergonomia, conforto e elegância para criar ambientes que acolhem, emocionam e revelam identidade em cada detalhe.</p>
-      <div class="welcome">Seja bem-vindo(a) à experiência Lily Zemuner</div>
-    </div>
-    <img src="manifesto.jpg" alt="Imagem manifesto">
-  </section>
+        <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
+        <!-- top CTAs intentionally removed; CTAs are only at the end for better conversion -->
+      </div>
 
-  <!-- PARA QUEM É -->
-  <section>
-    <div class="audience-header">
-      <h2 class="section-title">Para quem nossos projetos fazem sentido</h2>
-      <p class="section-subtitle">
-        Uma arquitetura pensada para quem enxerga o projeto como parte essencial da construção de valor, identidade e bem-estar.
-      </p>
-    </div>
+      <div class="hero-visual" aria-hidden="false">
+        <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional">
+      </div>
+    </section>
 
-    <div class="audience-grid">
-      <div class="audience-card">
+    <!-- TITLE for "Para quem é" -->
+    <h3 class="who-title" aria-hidden="false">Para quem criamos</h3>
+
+    <!-- PARA QUEM É -->
+    <section class="who" aria-label="Para quem é">
+      <div class="who-card" role="article">
         <h3>Quem está construindo ou reformando</h3>
-        <p>Busca planejamento, clareza e decisões conscientes antes do início da obra.</p>
+        <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
       </div>
-      <div class="audience-card">
+
+      <div class="who-card" role="article">
         <h3>Quem valoriza projeto autoral e acabamento</h3>
-        <p>Entende que cada detalhe comunica sofisticação, conforto e intenção.</p>
+        <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
       </div>
-      <div class="audience-card">
-        <h3>Quem entende que arquitetura é investimento</h3>
-        <p>Reconhece o impacto do bom projeto no valor, na experiência e na longevidade do espaço.</p>
+
+      <div class="who-card" role="article">
+        <h3>Quem entende arquitetura como investimento</h3>
+        <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
       </div>
+    </section>
+
+    <!-- MANIFESTO (with optional media) -->
+    <section class="manifesto-section" aria-label="Manifesto">
+      <h3 class="manifesto-title">Manifesto</h3>
+
+      <div class="manifesto-layout">
+        <div class="manifesto-card">
+          <p class="manifesto-text">
+Há mais de 20 anos, transformo espaços em narrativas silenciosas, onde cada escolha carrega intenção, memória e afeto.
+Nossos projetos nascem do encontro entre funcionalidade, sofisticação e sensibilidade.
+
+Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso escutar o que não é dito, traduzir sensações e unir ergonomia, conforto e elegância para criar ambientes que acolhem, emocionam e revelam identidade em cada detalhe.
+          </p>
+
+          <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <span style="font-weight:700">Lily Zemuner</span></div>
+        </div>
+
+        <div class="manifesto-media" aria-hidden="true">
+          <!-- Optional image. filename (case-sensitive): assets/images/manifesto.jpg -->
+          <img id="manifestoImg" src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" onerror="this.style.background='#efeae5';this.removeAttribute('src');" />
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA intro -->
+    <div style="margin-top:38px">
+      <div class="steps-intro">Os passos que adotamos na sua reforma</div>
+      <p class="steps-sub">Um processo claro, artesanal e pensado para alto padrão.</p>
     </div>
-  </section>
 
-  <!-- PROCESSO -->
-  <section>
-    <div class="process-header">
-      <h2 class="section-title">Os passos que adotamos na sua reforma</h2>
-      <p class="section-subtitle">
-        Um processo claro, personalizado e conduzido com sensibilidade do início ao fim.
-      </p>
+    <!-- COMO FUNCIONA (4 steps) -->
+    <section class="steps" aria-label="Como funciona">
+      <div class="step" role="article">
+        <div class="num">1</div>
+        <h4>Pré-questionário</h4>
+        <p>Alguns dados iniciais para compreendermos o escopo e as prioridades do projeto.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">2</div>
+        <h4>Análise inicial (WhatsApp)</h4>
+        <p>Avaliação prática por mensagem para verificar viabilidade e alinhar próximos passos.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">3</div>
+        <h4>Proposta personalizada</h4>
+        <p>Proposta feita manualmente e adaptada ao seu objetivo, com atenção aos detalhes essenciais.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">4</div>
+        <h4>Reunião estratégica</h4>
+        <p>Conversa decisiva para fechar escopo, prioridades e prazos — presencial ou remota.</p>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTO -->
+    <section class="testimonial" aria-label="Depoimento">
+      <p>“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
+      <div class="who">— Mariana Alves</div>
+    </section>
+
+    <!-- CTA final -->
+    <div class="final-cta" role="region" aria-label="Chamada final">
+      <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
     </div>
 
-    <div class="process-grid">
-      <div class="process-step">
-        <span>01</span>
-        <h3>Pré-questionário</h3>
-        <p>Entendemos suas necessidades, desejos e expectativas.</p>
-      </div>
-      <div class="process-step">
-        <span>02</span>
-        <h3>Análise de viabilidade</h3>
-        <p>Alinhamento inicial e direcionamento estratégico via WhatsApp.</p>
-      </div>
-      <div class="process-step">
-        <span>03</span>
-        <h3>Proposta personalizada</h3>
-        <p>Construída de forma exclusiva, respeitando o contexto do seu projeto.</p>
-      </div>
-      <div class="process-step">
-        <span>04</span>
-        <h3>Reunião estratégica</h3>
-        <p>Apresentação, ajustes e consolidação do caminho a seguir.</p>
-      </div>
-    </div>
-  </section>
+    <footer class="footer" role="contentinfo">
+      <div>© <span id="year"></span> Lily Zemuner</div>
+      <div style="color:var(--muted)">Publicação via GitHub Pages</div>
+    </footer>
+  </div>
 
-  <!-- DEPOIMENTO -->
-  <section class="testimonial">
-    <p>
-      “Trabalhar com a Lily foi uma experiência transformadora. Cada escolha foi feita com extremo cuidado, sensibilidade e domínio técnico. O resultado superou todas as expectativas.”
-    </p>
-    <span>— Mariana A.</span>
-  </section>
+<script>
+/* runtime housekeeping */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- CTA FINAL -->
-  <section class="final-cta">
-    <h2>Vamos conversar sobre o seu projeto</h2>
-    <div class="buttons">
-      <a href="#formulario" class="btn primary">Solicitar orçamento</a>
-      <a href="#portfolio" class="btn">Ver portfólio</a>
-    </div>
-  </section>
-
+/* manifesto image fallback note in console; file expected: assets/images/manifesto.jpg (case-sensitive) */
+const mImg = document.getElementById('manifestoImg');
+mImg.addEventListener('error', ()=> {
+  console.warn('Manifesto image missing: assets/images/manifesto.jpg (case-sensitive). If you want the image, upload it with this exact name.');
+});
+</script>
 </body>
 </html>
