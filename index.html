@@ -4,23 +4,65 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Lily Zemuner — projetos com alma e afeto</title>
-<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade.">
+<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade." />
+
+<!-- Fonts: preconnect + display=swap (avoid FOIT) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Canonical set dynamically in script below -->
+<link rel="canonical" href="" />
+
+<!-- Open Graph & Twitter (og:image: upload assets/images/og-hero.jpg recommended) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lily Zemuner — projetos com alma e afeto" />
+<meta property="og:description" content="Projetos residenciais autorais de alto padrão. Sofisticação, funcionalidade e sensibilidade." />
+<meta property="og:url" content="" />
+<meta property="og:image" content="assets/images/og-hero.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Lily Zemuner — projetos com alma e afeto" />
+<meta name="twitter:description" content="Projetos residenciais autorais de alto padrão. Sofisticação, funcionalidade e sensibilidade." />
+<meta name="twitter:image" content="assets/images/og-hero.jpg" />
+
+<!-- Structured data (JSON-LD) - URL set dynamically below -->
+<script type="application/ld+json" id="ld-json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Lily Zemuner Arquitetura",
+  "description": "Projetos residenciais autorais e atemporais que unem estética, função e conforto.",
+  "url": "",
+  "logo": "assets/images/logo.png",
+  "sameAs": ["https://www.instagram.com/lilyzemuner.arquiteta/"],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+5511994873720",
+    "contactType": "customer service",
+    "areaServed": "BR",
+    "availableLanguage": ["pt-BR"]
+  }]
+}
+</script>
+
 <style>
+/* Root scale and base */
 :root{
-  --bg: #fbf7f3;
-  --card: #ffffff;
-  --muted: #7a746c;
-  --accent: #c49b3a;       /* ocre sofisticado (ajustado) */
-  --accent-dark: #927033;  /* tom secundário mais fechado */
-  --ink: #262320;
-  --radius:20px;
-  --max-width:1100px;
-  --shadow: 0 22px 54px rgba(20,18,16,0.06);
-  --gutter:28px;
+  font-size:16px; /* 1rem = 16px */
+  --bg:#fbf7f3;
+  --card:#ffffff;
+  --muted:#7a746c;
+  --accent:#c49b3a;
+  --accent-dark:#927033;
+  --ink:#262320;
+  --radius:1.25rem; /* 20px */
+  --max-width:68rem; /* 1100px */
+  --shadow: 0 1.375rem 3.375rem rgba(20,18,16,0.06); /* 22px 54px */
+  --gutter:1.75rem; /* 28px */
 }
 
-/* Reset & base */
+/* Reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -29,374 +71,238 @@ body{
   background:linear-gradient(180deg,var(--bg),#f4f1ed);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
   line-height:1.45;
   -webkit-text-size-adjust:100%;
+  -webkit-font-feature-settings:"kern";
 }
 
-/* Page container */
-.page{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:32px 28px;
+/* Focus visible for accessibility */
+:focus{
+  outline:3px solid rgba(196,155,58,0.16);
+  outline-offset:3px;
+  transition:outline-offset .12s;
 }
 
-/* HERO (kept institutional; small top CTA added inside hero-card) */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 520px;
-  gap:var(--gutter);
-  align-items:stretch;
-  margin:6px 0 24px 0;
-}
-.hero-card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
-  border-radius:var(--radius);
-  padding:48px;
-  box-shadow:var(--shadow);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.eyebrow{font-size:13px;color:var(--accent-dark);font-weight:700;letter-spacing:.5px;margin-bottom:12px}
-.title{
-  font-family:"Playfair Display",serif;
-  font-size:44px;
-  font-weight:600;
-  line-height:1.06;
-  letter-spacing:-0.35px;
-  margin:0;
-  white-space:nowrap;
-}
-.subtitle{
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  font-weight:400;
-  color:var(--muted);
-  margin:8px 0 16px;
-  white-space:nowrap;
-}
-.lead{color:var(--muted);font-size:15px;max-width:68ch;margin-top:10px;line-height:1.55}
+/* Layout */
+header{display:block}
+main{max-width:var(--max-width);margin:0 auto;padding:2rem}
+.hero{display:grid;grid-template-columns:1fr 32rem;gap:var(--gutter);align-items:stretch;margin:0 0 1.5rem 0}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:.8125rem;color:var(--accent-dark);font-weight:700;letter-spacing:.06em;margin-bottom:.75rem}
+.title{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;line-height:1.06;letter-spacing:-0.02em}
+.subtitle{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--muted);margin:.5rem 0 1rem 0}
+.lead{color:var(--muted);font-size:.9375rem;max-width:68ch;margin-top:.6rem;line-height:1.6}
 
-/* small elegant CTA near top (discrete, editorial) */
-.top-cta{
-  margin-top:20px;
-}
-.btn-inline{
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-  border:1px solid rgba(146,112,51,0.12);
-  color:var(--accent-dark);
-  background: rgba(196,155,58,0.05);
-  transition:all 180ms ease;
-}
-.btn-inline:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 18px rgba(146,112,51,0.08);
-}
+/* small inline CTA */
+.top-cta{margin-top:1.25rem}
+.btn-inline{display:inline-block;padding:.625rem .875rem;border-radius:.75rem;font-weight:700;text-decoration:none;border:1px solid rgba(146,112,51,0.12);color:var(--accent-dark);background:rgba(196,155,58,0.04);transition:transform .16s,box-shadow .16s}
+.btn-inline:hover{transform:translateY(-3px);box-shadow:0 .5rem 1rem rgba(146,112,51,0.08)}
 
-/* Standard buttons for final CTA */
-.btn{
-  padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
-}
-.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(146,112,51,0.12)}
-.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink)}
-
-/* Hero image */
-.hero-visual{
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  min-height:420px;
-  background:#ece8e4;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+/* visual hero image */
+.hero-visual{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:26rem;background:#ece8e4;display:flex;align-items:center;justify-content:center}
 .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
 
-/* Section title for "Para quem é" */
-.who-title{
-  margin-top:28px;
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  color:var(--accent-dark);
-  letter-spacing:0.6px;
-  font-weight:700;
-}
+/* sections */
+.section-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);letter-spacing:.06em;margin-top:1.75rem}
+.who{margin-top:.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem}
+.who-card{background:var(--card);border-radius:.875rem;padding:1.125rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .75rem 1.875rem rgba(20,18,16,0.03)}
+.who-card h3{font-family:"Playfair Display",serif;margin:0 0 .5rem 0;font-size:1rem}
+.who-card p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.45}
 
-/* "Para quem é" cards */
-.who{
-  margin-top:12px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.who-card{
-  background:var(--card);
-  border-radius:14px;
-  padding:18px;
-  border:1px solid rgba(0,0,0,0.03);
-  box-shadow:0 12px 30px rgba(20,18,16,0.03);
-}
-.who-card h3{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:16px}
-.who-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
+/* manifesto */
+.manifesto-section{margin-top:1.75rem}
+.manifesto-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin:0 0 .75rem 0;font-weight:700}
+.manifesto-layout{display:grid;grid-template-columns:1fr 26rem;gap:1.5rem;align-items:start}
+.manifesto-card{background:linear-gradient(180deg,#fff,#fbf9f7);padding:1.5rem;border-radius:.875rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.02)}
+.manifesto-text{font-family:Inter,system-ui;color:var(--muted);font-size:.9375rem;line-height:1.7;max-width:64ch;white-space:pre-wrap;margin:0}
+.manifesto-welcome{margin-top:.9rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent);font-weight:600;display:inline-block;position:relative;padding-top:.5rem}
+.manifesto-welcome::before{content:"";display:block;height:2px;width:4rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));margin-bottom:.6rem}
 
-/* MANIFESTO — structured block */
-.manifesto-section{
-  margin-top:42px;
-}
-.manifesto-title{
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  color:var(--accent-dark);
-  margin:0 0 12px 0;
-  letter-spacing:0.6px;
-  font-weight:700;
-}
-
-/* Two-column manifesto layout */
-.manifesto-layout{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  gap:24px;
-  align-items:start;
-}
-.manifesto-card{
-  background:linear-gradient(180deg,#fff,#fbf9f7);
-  padding:26px;
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  border:1px solid rgba(0,0,0,0.02);
-}
-.manifesto-text{
-  font-family:Inter,system-ui;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.65;
-  max-width:64ch;
-  white-space:pre-wrap;
-  margin:0;
-}
-/* stylized welcome line */
-.manifesto-welcome{
-  margin-top:18px;
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  color:var(--accent);
-  font-weight:600;
-  line-height:1.2;
-  display:inline-block;
-  padding-top:10px;
-  position:relative;
-}
-.manifesto-welcome::before{
-  content:"";
-  display:block;
-  height:1px;
-  width:64px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
-  margin-bottom:10px;
-}
-
-/* manifesto media (optional image) */
-.manifesto-media{
-  border-radius:12px;
-  overflow:hidden;
-  height:100%;
-  max-height:420px;
-  background:#efeae5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+/* manifesto media */
+.manifesto-media{border-radius:.75rem;overflow:hidden;height:100%;max-height:26rem;background:#efeae5;display:flex;align-items:center;justify-content:center}
 .manifesto-media img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Steps intro and steps */
-.steps-intro{
-  margin-top:36px;
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  color:var(--accent-dark);
-  margin-bottom:10px;
-}
-.steps-sub{color:var(--muted);margin:0 0 14px 0}
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-.step{
-  background:var(--card);
-  border-radius:12px;
-  padding:18px;
-  text-align:left;
-  border:1px solid rgba(0,0,0,0.03);
-  box-shadow:0 10px 26px rgba(20,18,16,0.03);
-}
-.step .num{
-  width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;
-}
-.step h4{margin:0 0 6px;font-family:"Playfair Display",serif;font-size:15px}
-.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+/* steps */
+.steps-intro{margin-top:1.5rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin-bottom:.5rem}
+.steps-sub{color:var(--muted);margin:0 0 1rem 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.875rem}
+.step{background:var(--card);border-radius:.75rem;padding:1rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .625rem 1.625rem rgba(20,18,16,0.03)}
+.step .num{width:2.25rem;height:2.25rem;border-radius:.625rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.625rem}
+.step h4{margin:0 0 .5rem 0;font-family:"Playfair Display",serif;font-size:1rem}
+.step p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.45}
 
-/* Testimonial */
-.testimonial{
-  margin-top:36px;
-  background:linear-gradient(180deg,#fff,#fbf9f7);
-  border-radius:14px;padding:22px;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow);
-}
-.testimonial p{font-family:"Playfair Display",serif;font-size:18px;color:var(--ink);margin:0 0 10px;line-height:1.35}
+/* testimonial */
+.testimonial{margin-top:1.5rem;background:linear-gradient(180deg,#fff,#fbf9f7);border-radius:.875rem;padding:1.25rem;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow)}
+.testimonial p{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--ink);margin:0 0 .625rem 0;line-height:1.35}
 .testimonial .who{color:var(--muted);font-weight:700}
 
-/* Final CTA & Footer */
-.final-cta{margin-top:30px;display:flex;gap:14px;align-items:center}
-.footer{margin-top:36px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between}
+/* final CTA & footer */
+.final-cta{margin-top:1.25rem;display:flex;gap:.875rem;align-items:center}
+.footer{margin-top:1.25rem;color:var(--muted);font-size:.875rem;display:flex;justify-content:space-between;align-items:center}
 
-/* Responsive adjustments */
+/* responsiveness */
 @media (max-width:980px){
-  .hero{grid-template-columns:1fr;gap:20px}
+  .hero{grid-template-columns:1fr;gap:1.25rem}
   .who{grid-template-columns:1fr}
   .manifesto-layout{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr)}
-  .hero-visual{min-height:320px}
+  .hero-visual{min-height:20rem}
 }
 @media (max-width:560px){
-  .page{padding:20px}
-  .title{font-size:30px;white-space:normal}
-  .subtitle{font-size:16px;white-space:normal}
+  main{padding:1.25rem}
+  .title{font-size:1.875rem}
+  .subtitle{font-size:1rem}
   .steps{grid-template-columns:1fr}
-  .top-cta{margin-top:16px}
+  .top-cta{margin-top:1rem}
 }
 </style>
 </head>
 <body>
-  <div class="page" role="main">
+<header role="banner" aria-hidden="true"></header>
 
-    <!-- HERO -->
-    <section class="hero" aria-label="Apresentação">
-      <div class="hero-card" aria-labelledby="hero-title">
-        <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
-        <span class="title" id="hero-title">Lily Zemuner</span>
-        <span class="subtitle">projetos com alma e afeto</span>
+<main role="main">
+  <!-- HERO -->
+  <section class="hero" aria-label="Apresentação">
+    <div class="hero-card" aria-labelledby="hero-title">
+      <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
 
-        <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
+      <h1 class="title" id="hero-title">Lily Zemuner</h1>
+      <div class="subtitle">projetos com alma e afeto</div>
 
-        <!-- top inline CTA: discrete, editorial -->
-        <div class="top-cta">
-          <a class="btn-inline" href="formulario.html">Solicitar Orçamento</a>
-        </div>
+      <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
+
+      <!-- small editorial CTA near top (help users who don't scroll) -->
+      <div class="top-cta">
+        <a class="btn-inline" href="formulario.html">Solicitar Orçamento</a>
       </div>
+    </div>
 
-      <div class="hero-visual" aria-hidden="false">
-        <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional">
-      </div>
-    </section>
+    <aside class="hero-visual" role="img" aria-label="Lily Zemuner — fotografia institucional">
+      <picture>
+        <source type="image/webp" srcset="assets/images/hero-1200.webp 1200w, assets/images/hero-800.webp 800w" />
+        <img src="assets/images/hero-1200.jpg" alt="Lily Zemuner — fotografia institucional" width="1200" height="800" />
+      </picture>
+    </aside>
+  </section>
 
-    <!-- TITLE for "Para quem é" -->
-    <h3 class="who-title" aria-hidden="false">Para quem criamos</h3>
+  <!-- PARA QUEM É -->
+  <h2 class="section-title who-title">Para quem criamos</h2>
+  <section class="who" aria-label="Para quem é">
+    <article class="who-card">
+      <h3>Quem está construindo ou reformando</h3>
+      <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
+    </article>
 
-    <!-- PARA QUEM É -->
-    <section class="who" aria-label="Para quem é">
-      <div class="who-card" role="article">
-        <h3>Quem está construindo ou reformando</h3>
-        <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
-      </div>
+    <article class="who-card">
+      <h3>Quem valoriza projeto autoral e acabamento</h3>
+      <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
+    </article>
 
-      <div class="who-card" role="article">
-        <h3>Quem valoriza projeto autoral e acabamento</h3>
-        <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
-      </div>
+    <article class="who-card">
+      <h3>Quem entende arquitetura como investimento</h3>
+      <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
+    </article>
+  </section>
 
-      <div class="who-card" role="article">
-        <h3>Quem entende arquitetura como investimento</h3>
-        <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
-      </div>
-    </section>
+  <!-- MANIFESTO -->
+  <section class="manifesto-section" aria-labelledby="manifesto-title">
+    <h2 id="manifesto-title" class="manifesto-title">Manifesto</h2>
 
-    <!-- MANIFESTO (with optional media) -->
-    <section class="manifesto-section" aria-label="Manifesto">
-      <h3 class="manifesto-title">Manifesto</h3>
-
-      <div class="manifesto-layout">
-        <div class="manifesto-card">
-          <p class="manifesto-text">
+    <div class="manifesto-layout">
+      <div class="manifesto-card">
+        <p class="manifesto-text">
 Há mais de 20 anos, transformo espaços em narrativas silenciosas, onde cada escolha carrega intenção, memória e afeto.
 Nossos projetos nascem do encontro entre funcionalidade, sofisticação e sensibilidade.
 
 Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso escutar o que não é dito, traduzir sensações e unir ergonomia, conforto e elegância para criar ambientes que acolhem, emocionam e revelam identidade em cada detalhe.
-          </p>
+        </p>
 
-          <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <span style="font-weight:700">Lily Zemuner</span></div>
-        </div>
-
-        <div class="manifesto-media" aria-hidden="true">
-          <!-- Optional image. filename (case-sensitive): assets/images/manifesto.jpg -->
-          <img id="manifestoImg" src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" onerror="this.style.background='#efeae5';this.removeAttribute('src');" />
-        </div>
+        <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <span style="font-weight:700">Lily Zemuner</span></div>
       </div>
-    </section>
 
-    <!-- COMO FUNCIONA intro -->
-    <div style="margin-top:38px">
-      <div class="steps-intro">Os passos que adotamos na sua reforma</div>
-      <p class="steps-sub">Um processo claro, artesanal e pensado para alto padrão.</p>
+      <figure class="manifesto-media" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="assets/images/manifesto-800.webp 800w, assets/images/manifesto-1200.webp 1200w" />
+          <img src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" width="800" height="1000" loading="lazy" />
+        </picture>
+      </figure>
     </div>
+  </section>
 
-    <!-- COMO FUNCIONA (4 steps) -->
-    <section class="steps" aria-label="Como funciona">
-      <div class="step" role="article">
-        <div class="num">1</div>
-        <h4>Pré-questionário</h4>
-        <p>Alguns dados iniciais para compreendermos o escopo e as prioridades do projeto.</p>
-      </div>
-      <div class="step" role="article">
-        <div class="num">2</div>
-        <h4>Análise inicial (WhatsApp)</h4>
-        <p>Avaliação prática por mensagem para verificar viabilidade e alinhar próximos passos.</p>
-      </div>
-      <div class="step" role="article">
-        <div class="num">3</div>
-        <h4>Proposta personalizada</h4>
-        <p>Proposta feita manualmente e adaptada ao seu objetivo, com atenção aos detalhes essenciais.</p>
-      </div>
-      <div class="step" role="article">
-        <div class="num">4</div>
-        <h4>Reunião estratégica</h4>
-        <p>Conversa decisiva para fechar escopo, prioridades e prazos — presencial ou remota.</p>
-      </div>
-    </section>
-
-    <!-- DEPOIMENTO -->
-    <section class="testimonial" aria-label="Depoimento">
-      <p>“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
-      <div class="who">— Mariana Alves</div>
-    </section>
-
-    <!-- CTA final -->
-    <div class="final-cta" role="region" aria-label="Chamada final">
-      <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
-    </div>
-
-    <footer class="footer" role="contentinfo">
-      <div>© <span id="year"></span> Lily Zemuner</div>
-      <div style="color:var(--muted)">Publicação via GitHub Pages</div>
-    </footer>
+  <!-- COMO FUNCIONA -->
+  <div style="margin-top:1.5rem">
+    <div class="steps-intro">Os passos que adotamos na sua reforma</div>
+    <p class="steps-sub">Um processo claro, artesanal e pensado para alto padrão.</p>
   </div>
 
-<script>
-/* runtime housekeeping */
-document.getElementById('year').textContent = new Date().getFullYear();
+  <section class="steps" aria-label="Como funciona">
+    <article class="step" aria-labelledby="step-1">
+      <div class="num">1</div>
+      <h4 id="step-1">Pré-questionário</h4>
+      <p>Alguns dados iniciais para compreendermos o escopo e as prioridades do projeto.</p>
+    </article>
 
-/* manifesto image fallback note in console; file expected: assets/images/manifesto.jpg (case-sensitive) */
-const mImg = document.getElementById('manifestoImg');
-mImg.addEventListener('error', ()=> {
-  console.warn('Manifesto image missing: assets/images/manifesto.jpg (case-sensitive). If you want the image, upload it with this exact name.');
-});
+    <article class="step" aria-labelledby="step-2">
+      <div class="num">2</div>
+      <h4 id="step-2">Análise inicial (WhatsApp)</h4>
+      <p>Avaliação prática por mensagem para verificar viabilidade e alinhar próximos passos.</p>
+    </article>
+
+    <article class="step" aria-labelledby="step-3">
+      <div class="num">3</div>
+      <h4 id="step-3">Proposta personalizada</h4>
+      <p>Proposta feita manualmente e adaptada ao seu objetivo, com atenção aos detalhes essenciais.</p>
+    </article>
+
+    <article class="step" aria-labelledby="step-4">
+      <div class="num">4</div>
+      <h4 id="step-4">Reunião estratégica</h4>
+      <p>Conversa decisiva para fechar escopo, prioridades e prazos — presencial ou remota.</p>
+    </article>
+  </section>
+
+  <!-- DEPOIMENTO -->
+  <section class="testimonial" aria-label="Depoimento">
+    <p>“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
+    <div class="who">— Mariana Alves</div>
+  </section>
+
+  <!-- CTA final -->
+  <div class="final-cta" role="region" aria-label="Chamada final">
+    <a class="btn btn-primary" href="formulario.html" id="final-cta">Solicitar Orçamento</a>
+    <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div>© <span id="year"></span> Lily Zemuner</div>
+    <div style="color:var(--muted)">Publicação via GitHub Pages</div>
+  </footer>
+</main>
+
+<script>
+// set canonical and OG url to current location (useful for GH Pages)
+(function(){
+  const url = location.href.replace(location.hash, '');
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if(canonical) canonical.href = url;
+  const og = document.querySelector('meta[property="og:url"]');
+  if(og) og.content = url;
+
+  // update JSON-LD url
+  try{
+    const ld = document.getElementById('ld-json');
+    if(ld){
+      const data = JSON.parse(ld.textContent);
+      data.url = url;
+      ld.textContent = JSON.stringify(data);
+    }
+  }catch(e){
+    console.warn('JSON-LD update failed', e);
+  }
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
 </script>
 </body>
 </html>
