@@ -4,223 +4,301 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Lily Zemuner — projetos com alma e afeto</title>
-<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão.">
+<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --bg:#fbf7f3;
-  --card:#ffffff;
-  --muted:#7a746c;
-  --accent:#b08a55;
-  --accent-dark:#8f6d3f;
-  --ink:#262320;
+  --bg: #fbf7f3;
+  --card: #ffffff;
+  --muted: #7a746c;
+  --accent: #b08a55;
+  --accent-dark: #8f6d3f;
+  --ink: #262320;
   --radius:20px;
   --max-width:1100px;
-  --shadow:0 22px 54px rgba(20,18,16,.06);
+  --shadow: 0 22px 54px rgba(20,18,16,0.06);
+  --gutter:28px;
 }
 
+/* Reset & base */
 *{box-sizing:border-box}
 html,body{height:100%}
-
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   background:linear-gradient(180deg,var(--bg),#f4f1ed);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  -webkit-text-size-adjust:100%;
 }
 
+/* Layout */
 .page{
   max-width:var(--max-width);
   margin:0 auto;
-  padding:28px 28px 36px;
+  padding:32px 28px;
 }
 
-/* HERO */
+/* Hero (prominent) */
 .hero{
   display:grid;
-  grid-template-columns:1fr 480px;
-  gap:32px;
+  grid-template-columns:1fr 520px;
+  gap:var(--gutter);
   align-items:stretch;
+  margin:6px 0 24px 0;
 }
-
 .hero-card{
-  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.92));
+  background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
   border-radius:var(--radius);
-  padding:56px;
+  padding:48px;
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
-
-.eyebrow{
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.6px;
-  color:var(--accent-dark);
-  margin-bottom:16px;
-}
-
+.eyebrow{font-size:13px;color:var(--accent-dark);font-weight:700;letter-spacing:.5px;margin-bottom:12px}
 .title{
   font-family:"Playfair Display",serif;
-  font-size:42px;
+  font-size:44px;
   font-weight:600;
   line-height:1.06;
-  letter-spacing:-0.4px;
+  letter-spacing:-0.35px;
   margin:0;
   white-space:nowrap;
 }
-
 .subtitle{
   font-family:"Playfair Display",serif;
   font-size:18px;
   font-weight:400;
-  line-height:1.2;
-  letter-spacing:.4px;
   color:var(--muted);
-  margin:6px 0 18px;
+  margin:8px 0 16px;
   white-space:nowrap;
 }
-
-.lead{
-  font-size:15px;
-  line-height:1.55;
-  color:var(--muted);
-  max-width:68ch;
-}
-
-.hero-actions{
-  margin-top:26px;
-  display:flex;
-  gap:14px;
-}
-
+.lead{color:var(--muted);font-size:15px;max-width:68ch;margin-top:10px;line-height:1.55}
+.hero-actions{margin-top:24px;display:flex;gap:12px;align-items:center}
 .btn{
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
+  padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;
 }
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(125,92,56,0.12)}
+.btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink)}
 
-.btn-primary{
-  background:linear-gradient(90deg,var(--accent),var(--accent-dark));
-  color:#fff;
-  box-shadow:0 14px 32px rgba(176,138,85,.18);
-}
-
-.btn-ghost{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.06);
-  color:var(--ink);
-}
-
-/* HERO IMAGE */
+/* Hero visual */
 .hero-visual{
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow:var(--shadow);
+  min-height:420px;
   background:#ece8e4;
-}
-
-.hero-visual img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 26%;
-  display:block;
-}
-
-/* SECTION */
-.section{
-  margin-top:44px;
-}
-
-.section h2{
-  font-family:"Playfair Display",serif;
-  font-size:22px;
-  margin:0 0 8px;
-}
-
-.section p{
-  color:var(--muted);
-  max-width:72ch;
-}
-
-/* FOOTER */
-.footer{
-  margin-top:48px;
   display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:14px;
+  align-items:center;
+  justify-content:center;
+}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
+
+/* "Para quem é" */
+.who{
+  margin-top:38px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.who-card{
+  background:var(--card);
+  border-radius:14px;
+  padding:18px;
+  border:1px solid rgba(0,0,0,0.03);
+  box-shadow:0 12px 30px rgba(20,18,16,0.03);
+}
+.who-card h3{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:16px}
+.who-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
+
+/* Manifesto / Sobre */
+.manifesto{
+  margin-top:42px;
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+}
+.manifesto .card{
+  background:linear-gradient(180deg,#fff,#fbf9f7);
+  padding:28px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  flex:1;
+  border:1px solid rgba(0,0,0,0.02);
+}
+.manifesto p{
+  margin:0;color:var(--muted);font-size:15px;line-height:1.65;font-family:Inter,system-ui;
+  max-width:72ch;
+  white-space:pre-line;
 }
 
-/* RESPONSIVE */
-@media(max-width:980px){
-  .hero{grid-template-columns:1fr}
-  .hero-card{padding:40px}
-  .hero-visual img{object-position:center 22%}
+/* Como funciona (4 passos) */
+.steps{
+  margin-top:42px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+.step{
+  background:var(--card);
+  border-radius:12px;
+  padding:18px;
+  text-align:left;
+  border:1px solid rgba(0,0,0,0.03);
+}
+.step .num{
+  width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px;
+}
+.step h4{margin:0 0 6px;font-family:"Playfair Display",serif;font-size:15px}
+.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+/* Testimonial */
+.testimonial{
+  margin-top:42px;
+  background:linear-gradient(180deg,#fff,#fbf9f7);
+  border-radius:14px;padding:22px;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow);
+}
+.testimonial p{font-family:"Playfair Display",serif;font-size:18px;color:var(--ink);margin:0 0 10px;line-height:1.35}
+.testimonial .who{color:var(--muted);font-weight:700}
+
+/* Final CTA */
+.final-cta{
+  margin-top:36px;display:flex;gap:14px;align-items:center;
 }
 
-@media(max-width:560px){
+/* Footer */
+.footer{margin-top:46px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:20px}
+  .who{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .manifesto{flex-direction:column}
+  .hero-visual{min-height:320px}
+}
+@media (max-width:560px){
   .page{padding:20px}
-  .title,.subtitle{white-space:normal}
-  .title{font-size:30px;line-height:1.08}
-  .subtitle{font-size:16px}
-  .hero-card{padding:28px}
-  .hero-visual img{object-position:center 18%}
+  .title{font-size:30px;white-space:normal}
+  .subtitle{font-size:16px;white-space:normal}
+  .steps{grid-template-columns:1fr}
 }
 </style>
 </head>
-
 <body>
-<div class="page">
+  <div class="page" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero-card" aria-labelledby="hero-title">
+        <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+        <span class="title" id="hero-title">Lily Zemuner</span>
+        <span class="subtitle">projetos com alma e afeto</span>
 
-<main>
-<section class="hero">
-  <div class="hero-card">
-    <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+        <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
 
-    <span class="title">Lily Zemuner</span>
-    <span class="subtitle">projetos com alma e afeto</span>
+        <div class="hero-actions" role="region" aria-label="Ações principais">
+          <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
+        </div>
+      </div>
 
-    <p class="lead">
-      Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do viver.
-    </p>
+      <div class="hero-visual" aria-hidden="false">
+        <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional">
+      </div>
+    </section>
 
-    <div class="hero-actions">
+    <!-- PARA QUEM É -->
+    <section class="who" aria-label="Para quem é">
+      <div class="who-card" role="article">
+        <h3>Quem está construindo ou reformando</h3>
+        <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
+      </div>
+
+      <div class="who-card" role="article">
+        <h3>Quem valoriza projeto autoral e acabamento</h3>
+        <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
+      </div>
+
+      <div class="who-card" role="article">
+        <h3>Quem entende arquitetura como investimento</h3>
+        <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
+      </div>
+    </section>
+
+    <!-- MANIFESTO / SOBRE -->
+    <section class="manifesto" aria-label="Manifesto">
+      <div class="card">
+        <p>
+Há mais de 20 anos, transformo espaços em
+narrativas silenciosas, onde cada escolha
+carrega intenção, memória e afeto. Nossos
+projetos nascem do encontro entre
+funcionalidade, sofisticação e sensibilidade.
+Na arquitetura, assim como na arte, a técnica
+é apenas o começo. É preciso escutar o que
+não é dito, traduzir sensações e unir
+ergonomia, conforto e elegância para criar
+ambientes que acolhem, emocionam e
+revelam identidade em cada detalhe.
+Seja bem-vindo(a) à experiência Lily Zemuner
+        </p>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="steps" aria-label="Como funciona">
+      <div class="step" role="article">
+        <div class="num">1</div>
+        <h4>Pré-questionário</h4>
+        <p>Alguns dados iniciais para compreendermos o escopo e as prioridades do projeto.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">2</div>
+        <h4>Análise inicial (WhatsApp)</h4>
+        <p>Avaliação prática por mensagem para verificar viabilidade e alinhar próximos passos.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">3</div>
+        <h4>Proposta personalizada</h4>
+        <p>Proposta feita manualmente e adaptada ao seu objetivo, com atenção aos detalhes essenciais.</p>
+      </div>
+      <div class="step" role="article">
+        <div class="num">4</div>
+        <h4>Reunião estratégica</h4>
+        <p>Conversa decisiva para fechar escopo, prioridades e prazos—presencial ou remota.</p>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTO -->
+    <section class="testimonial" aria-label="Depoimento">
+      <p>“O projeto de Lily traduziu exatamente aquilo que não sabíamos dizer. Cada espaço agora tem sentido, elegância e acolhimento — uma arquitetura sensível, precisa e transformadora.”</p>
+      <div class="who">— Mariana Alves</div>
+    </section>
+
+    <!-- CTA final -->
+    <div class="final-cta" role="region" aria-label="Chamada final">
       <a class="btn btn-primary" href="formulario.html">Solicitar Orçamento</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank">Ver Portfólio</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
     </div>
+
+    <footer class="footer" role="contentinfo">
+      <div>© <span id="year"></span> Lily Zemuner</div>
+      <div style="color:var(--muted)">Publicação via GitHub Pages</div>
+    </footer>
   </div>
-
-  <div class="hero-visual">
-    <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional">
-  </div>
-</section>
-
-<section class="section">
-  <h2>Sobre</h2>
-  <p>
-    Arquitetura residencial de alto padrão com abordagem sensível, autoral e atemporal, desenvolvida a partir da escuta cuidadosa e da compreensão profunda de cada cliente.
-  </p>
-</section>
-</main>
-
-<footer class="footer">
-  <div>© <span id="year"></span> Lily Zemuner</div>
-  <div>GitHub Pages</div>
-</footer>
-
-</div>
 
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
+/* runtime housekeeping */
+document.getElementById('year').textContent = new Date().getFullYear();
+const heroImg = document.querySelector('.hero-visual img');
+heroImg.addEventListener('error', ()=> {
+  console.warn('Hero image missing: assets/images/hero.jpg (case-sensitive)');
+  heroImg.style.background = '#e9e6e2';
+  heroImg.alt = 'Foto institucional';
+});
 </script>
 </body>
 </html>
-
