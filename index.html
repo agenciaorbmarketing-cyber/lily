@@ -6,6 +6,7 @@
 <title>Lily Zemuner — projetos com alma e afeto</title>
 <meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade." />
 
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -21,9 +22,10 @@
   font-size:16px;
   --bg:#fbf7f3;
   --card:#ffffff;
-  --muted:#7a746c;
-  --accent:#c49b3a;
-  --accent-dark:#927033;
+  --muted:#6e675f;
+  /* ocre amarelado sofisticado (requested) */
+  --accent: #d1a92f;       /* brighter ocre */
+  --accent-dark: #a57f14;  /* deeper ocre for contrast */
   --ink:#262320;
   --radius:1.25rem;
   --max-width:68rem;
@@ -31,7 +33,7 @@
   --gutter:1.75rem;
 }
 
-/* Reset */
+/* base reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -43,37 +45,39 @@ body{
   line-height:1.45;
 }
 
-/* Focus for accessibility */
-:focus{outline:3px solid rgba(196,155,58,0.16);outline-offset:3px;transition:outline-offset .12s}
+/* focus visible */
+:focus{outline:3px solid rgba(209,169,47,0.16);outline-offset:3px}
 
-/* Layout */
+/* container */
 main{max-width:var(--max-width);margin:0 auto;padding:2rem}
+
+/* HERO */
 .hero{display:grid;grid-template-columns:1fr 32rem;gap:var(--gutter);align-items:stretch;margin:0 0 1.5rem 0}
 .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
-.eyebrow{font-size:.8125rem;color:var(--accent-dark);font-weight:700;letter-spacing:.06em;margin-bottom:.75rem}
+.eyebrow{font-size:.8125rem;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-bottom:.75rem;text-transform:uppercase}
 .title{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;line-height:1.06;letter-spacing:-0.02em}
 .subtitle{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--muted);margin:.5rem 0 1rem 0}
 .lead{color:var(--muted);font-size:.9375rem;max-width:68ch;margin-top:.6rem;line-height:1.6}
 
-/* top inline CTA */
+/* inline top CTA (discrete, editorial) */
 .top-cta{margin-top:1.25rem}
-.btn-inline{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem .875rem;border-radius:.75rem;font-weight:700;text-decoration:none;border:1px solid rgba(146,112,51,0.12);color:var(--accent-dark);background:rgba(196,155,58,0.04);transition:transform .16s,box-shadow .16s;white-space:nowrap}
-.btn-inline:hover{transform:translateY(-3px);box-shadow:0 .5rem 1rem rgba(146,112,51,0.08)}
+.btn-inline{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem .875rem;border-radius:.75rem;font-weight:700;text-decoration:none;border:1px solid rgba(165,127,20,0.12);color:var(--accent-dark);background:rgba(209,169,47,0.05);transition:transform .16s,box-shadow .16s;white-space:nowrap}
+.btn-inline:hover{transform:translateY(-3px);box-shadow:0 .5rem 1rem rgba(165,127,20,0.08)}
 
 /* hero image */
 .hero-visual{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:26rem;background:#ece8e4;display:flex;align-items:center;justify-content:center}
 .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
 
-/* Section title and cards */
-.section-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);letter-spacing:.06em;margin-top:1.75rem}
+/* "Para quem é" */
+.section-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent);letter-spacing:.06em;margin-top:1.75rem;text-transform:uppercase}
 .who{margin-top:.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem}
 .who-card{background:var(--card);border-radius:.875rem;padding:1.125rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .75rem 1.875rem rgba(20,18,16,0.03);display:flex;flex-direction:column}
 .who-card h3{font-family:"Playfair Display",serif;margin:0 0 .5rem 0;font-size:1rem}
 .who-card p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.45}
 
-/* manifesto */
+/* Manifesto */
 .manifesto-section{margin-top:1.75rem}
-.manifesto-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin:0 0 .75rem 0;font-weight:700}
+.manifesto-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent);margin:0 0 .75rem 0;font-weight:700;text-transform:uppercase}
 .manifesto-layout{display:grid;grid-template-columns:1fr 26rem;gap:1.5rem;align-items:start}
 .manifesto-card{background:linear-gradient(180deg,#fff,#fbf9f7);padding:1.5rem;border-radius:.875rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.02);display:flex;flex-direction:column;justify-content:space-between}
 .manifesto-text{font-family:Inter,system-ui;color:var(--muted);font-size:.9375rem;line-height:1.7;max-width:64ch;white-space:pre-wrap;margin:0}
@@ -85,7 +89,7 @@ main{max-width:var(--max-width);margin:0 auto;padding:2rem}
 .manifesto-media img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* steps */
-.steps-intro{margin-top:1.5rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin-bottom:.5rem}
+.steps-intro{margin-top:1.5rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase}
 .steps-sub{color:var(--muted);margin:0 0 1rem 0}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.875rem}
 .step{background:var(--card);border-radius:.75rem;padding:1rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .625rem 1.625rem rgba(20,18,16,0.03)}
@@ -98,20 +102,20 @@ main{max-width:var(--max-width);margin:0 auto;padding:2rem}
 .testimonial p{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--ink);margin:0 0 .625rem 0;line-height:1.35}
 .testimonial .who{color:var(--muted);font-weight:700}
 
-/* final CTA — stylized and non-wrapping on desktop */
+/* final CTA */
 .final-cta{margin-top:1.25rem;display:flex;gap:.875rem;align-items:center;flex-wrap:wrap}
 .final-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;border-radius:.875rem;text-decoration:none}
-.final-cta .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(146,112,51,0.12);white-space:nowrap}
+.final-cta .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(165,127,20,0.12);white-space:nowrap}
 .final-cta .btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink);white-space:nowrap}
 
-/* ensure buttons don't wrap awkwardly on mobile — stack instead */
+/* stack buttons on narrow screens */
 @media (max-width:600px){
   .final-cta{flex-direction:column;align-items:stretch}
   .final-cta a{width:100%;justify-content:center;white-space:normal;padding:.85rem 1rem}
   .top-cta .btn-inline{white-space:normal}
 }
 
-/* small responsive tweaks */
+/* responsive tweaks */
 @media (max-width:980px){
   .hero{grid-template-columns:1fr;gap:1.25rem}
   .who{grid-template-columns:1fr}
@@ -133,8 +137,10 @@ main{max-width:var(--max-width);margin:0 auto;padding:2rem}
   <section class="hero" aria-label="Apresentação">
     <div class="hero-card" aria-labelledby="hero-title">
       <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+
       <h1 class="title" id="hero-title">Lily Zemuner</h1>
       <div class="subtitle">projetos com alma e afeto</div>
+
       <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
 
       <div class="top-cta">
@@ -143,11 +149,8 @@ main{max-width:var(--max-width);margin:0 auto;padding:2rem}
     </div>
 
     <aside class="hero-visual" role="img" aria-label="Lily Zemuner — fotografia institucional">
-      <picture>
-        <source type="image/webp" srcset="assets/images/hero-1200.webp 1200w, assets/images/hero-800.webp 800w" />
-        <!-- fallback: use existing hero.jpg to ensure it always shows -->
-        <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional" width="1200" height="800" />
-      </picture>
+      <!-- using original filename present in your repo -->
+      <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional" width="1200" height="800" />
     </aside>
   </section>
 
@@ -187,10 +190,8 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
       </div>
 
       <figure class="manifesto-media" aria-hidden="true">
-        <picture>
-          <source type="image/webp" srcset="assets/images/manifesto-1200.webp 1200w, assets/images/manifesto-800.webp 800w" />
-          <img src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" width="800" height="1000" loading="lazy" />
-        </picture>
+        <!-- using original filename present in your repo -->
+        <img src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" width="800" height="1000" loading="lazy" />
       </figure>
     </div>
   </section>
@@ -246,34 +247,27 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
 </main>
 
 <script>
-/* year */
+/* set year */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Robust image fallback: if picture sources fail, keep hero.jpg/manifesto.jpg present.
-   If hero.jpg missing, attempt older names and finally do nothing.
-*/
+/* small fallback if images fail (keeps original filenames in src) */
 (function(){
-  // hero fallback: if hero image fails, try known fallback names
-  const heroImg = document.querySelector('.hero-visual img');
-  if(heroImg){
-    heroImg.addEventListener('error', function handler(){
-      // if current src isn't the simple hero.jpg, set to hero.jpg
-      if(!this.src.includes('hero.jpg')){
-        this.src = 'assets/images/hero.jpg';
-        return;
+  const hero = document.querySelector('.hero-visual img');
+  if(hero){
+    hero.addEventListener('error', function onErr(){
+      // if hero.jpg not present, attempt older common names (safe fallback)
+      const fallbacks = ['assets/images/hero.jpg','assets/images/hero1.jpg'];
+      for(const f of fallbacks){
+        if(this.src.includes(f)) continue;
       }
-      this.removeEventListener('error', handler);
+      // no further action; keeps blank background
+      this.removeEventListener('error', onErr);
     });
   }
-
-  const mImg = document.querySelector('.manifesto-media img');
-  if(mImg){
-    mImg.addEventListener('error', function handler2(){
-      if(!this.src.includes('manifesto.jpg')){
-        this.src = 'assets/images/manifesto.jpg';
-        return;
-      }
-      this.removeEventListener('error', handler2);
+  const m = document.querySelector('.manifesto-media img');
+  if(m){
+    m.addEventListener('error', function onErr2(){
+      this.removeEventListener('error', onErr2);
     });
   }
 })();
