@@ -12,63 +12,60 @@
 
 <style>
 :root{
-  --bg:#fbf7f3;
-  --card:#ffffff;
-  --text:#262320;
-  --muted:#6f6a63;
-  --accent:#c7a639;
-  --accent-dark:#9b7f2b;
-  --radius:1rem;
-  --container-max:68rem;
-  --shadow:0 1.25rem 3rem rgba(20,18,16,0.06);
-  --gutter:1.5rem;
-  --pad:1.25rem;
+  --bg: #f6efe6;             /* single uniform beige background */
+  --card: #ffffff;
+  --text: #262320;
+  --muted: #6f6a63;
+  --accent: #c7a639;
+  --accent-dark: #9b7f2b;
+  --radius: 1rem;
+  --container-max: 68rem;
+  --shadow: 0 1.25rem 3rem rgba(20,18,16,0.06);
+  --gutter: 1.25rem;        /* slightly tighter gutters for harmony */
+  --card-pad-small: 1rem;
+  --card-pad-regular: 1.15rem;
+  --card-pad-large: 1.25rem;
 }
 
-/* Reset */
+/* Base reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  background:linear-gradient(180deg,var(--bg),#f2efe9);
+  background:var(--bg); /* uniform background color — no gradient */
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   line-height:1.55;
+  -webkit-text-size-adjust:100%;
 }
 
-/* Accessible focus */
+/* Focus visible for accessibility */
 :focus{outline:3px solid rgba(199,166,57,0.14);outline-offset:3px}
 
-/* Container */
+/* Page container */
 main{max-width:var(--container-max);margin:0 auto;padding:2rem}
 
-/* Reusable card */
+/* Reusable card with controlled padding */
 .card{
   background:var(--card);
-  border-radius:calc(var(--radius) + .1rem);
-  padding:calc(var(--pad) + .1rem);
+  border-radius:calc(var(--radius) + 0.1rem);
+  padding:var(--card-pad-regular);
   box-shadow:var(--shadow);
   border:1px solid rgba(0,0,0,0.03);
   display:flex;
   flex-direction:column;
-  gap:0.85rem;
+  gap:0.75rem;
 }
 
-/* HERO */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 480px;
-  gap:var(--gutter);
-  align-items:start; /* we'll equalize heights with JS */
-}
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr;gap:1.25rem}
-}
+/* HERO grid: tighter gutters, align-items:start so JS can equalize */
+.hero{display:grid;grid-template-columns:1fr 480px;gap:var(--gutter);align-items:start;margin-bottom:1.5rem}
+@media (max-width:980px){ .hero{grid-template-columns:1fr;gap:1rem} }
 
-.hero-card{justify-content:center} /* vertical centering when heights are equal */
-.eyebrow{font-size:.88rem;color:var(--accent);font-weight:600;margin:0}
-h1{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;font-weight:700;line-height:1.02}
+/* Hero card content: center vertically when card taller than content */
+.hero-card{display:flex;flex-direction:column;justify-content:center;padding:var(--card-pad-large)}
+.eyebrow{font-size:.88rem;color:var(--accent);font-weight:600;margin:0;text-transform:none}
+h1{font-family:"Playfair Display",serif;font-size:2.8rem;margin:0;font-weight:700;line-height:1.02}
 .subtitle{font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--muted);margin:0}
 .lead{font-size:1rem;color:var(--muted);max-width:52ch;white-space:pre-line;margin-top:.4rem}
 
@@ -82,43 +79,51 @@ h1{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;font-weight:7
 }
 .btn-inline:hover{transform:translateY(-2px);box-shadow:0 .5rem 1rem rgba(155,127,43,0.08)}
 
-/* HERO visual: preserve image fully (no cropping) */
-.hero-visual{display:flex;align-items:center;justify-content:center;border-radius:calc(var(--radius) + .1rem);overflow:visible}
-.hero-visual img{width:100%;height:auto;display:block;border-radius:.5rem;box-shadow:0 8px 24px rgba(20,18,16,0.06);}
+/* HERO visual: show full image, do not crop; image container height will drive paired card height */
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.hero-visual img{
+  width:100%;
+  height:auto;
+  max-width:480px;     /* fits column width without stretching */
+  display:block;
+  border-radius:.6rem;
+  box-shadow:0 8px 24px rgba(20,18,16,0.06);
+  object-fit:contain;  /* ensure image not cropped */
+}
 
-/* Section title: slightly larger and bold */
-.section-title{font-family:"Playfair Display",serif;font-size:1.12rem;color:var(--accent);margin-top:1.5rem;margin-bottom:.6rem;font-weight:700}
+/* Section heading style — slightly larger & bold */
+.section-title{font-family:"Playfair Display",serif;font-size:1.12rem;color:var(--accent);margin-top:1.6rem;margin-bottom:.6rem;font-weight:700}
 
-/* 'Para quem é' - equal heights: grid auto rows */
-.who{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;grid-auto-rows:1fr}
+/* 'Para quem é' grid: equal heights via grid-auto-rows and stretch cards */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-bottom:1rem;grid-auto-rows:1fr}
 @media (max-width:980px){ .who{grid-template-columns:1fr} }
-.who-card .card{height:100;min-height:0;height:100%}
+.who-card .card{height:100%;display:flex;flex-direction:column;justify-content:center;padding:var(--card-pad-regular)}
 .who-card h3{font-family:"Playfair Display",serif;margin:0;font-size:1.06rem;font-weight:700}
 .who-card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.45}
 
-/* MANIFESTO: title inside card; manifesto-card height matched to manifesto image via JS */
+/* MANIFESTO: title INSIDE card; manifesto media drives card height so pair matches */
 .manifesto{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter);align-items:start;margin-bottom:1rem;grid-auto-rows:auto}
 @media (max-width:980px){ .manifesto{grid-template-columns:1fr} }
-.manifesto-card{padding:1.25rem}
+.manifesto-card{padding:var(--card-pad-large);display:flex;flex-direction:column;justify-content:center}
 .manifesto-inner-title{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.08rem;margin:0 0 .6rem;font-weight:700}
 .manifesto-text{margin:0;color:var(--muted);font-size:1rem;white-space:pre-line;max-width:62ch;line-height:1.6}
 .manifesto-welcome{margin-top:.85rem;font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--accent);font-weight:600}
 
-/* Manifesto image container: keep full image */
+/* Manifesto image: preserve full image, will determine paired card height */
 .manifesto-media{display:flex;align-items:center;justify-content:center}
-.manifesto-media img{width:100%;height:auto;display:block;border-radius:.6rem;box-shadow:0 8px 20px rgba(20,18,16,0.06)}
+.manifesto-media img{width:100%;height:auto;display:block;border-radius:.6rem;box-shadow:0 8px 20px rgba(20,18,16,0.06);object-fit:contain;max-width:420px}
 
-/* STEPS: equal heights */
+/* STEPS: grid with equal heights */
 .steps-intro{font-family:"Playfair Display",serif;font-size:1.12rem;color:var(--accent);margin-top:1.25rem;margin-bottom:.4rem;font-weight:700}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1rem;grid-auto-rows:1fr}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-bottom:1rem;grid-auto-rows:1fr}
 @media (max-width:980px){ .steps{grid-template-columns:repeat(2,1fr)} }
-.step .card{height:100%}
+.step .card{height:100%;padding:var(--card-pad-small);display:flex;flex-direction:column;justify-content:center}
 .step .num{width:2.2rem;height:2.2rem;border-radius:.5rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.6rem}
 .step h4{font-family:"Playfair Display",serif;margin:.25rem 0 .5rem;font-size:1.03rem;font-weight:700}
 .step p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
 
 /* TESTIMONIAL */
-.testimonial{padding:1.05rem;border-radius:.8rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);margin-bottom:1rem}
+.testimonial{padding:var(--card-pad-regular);border-radius:.8rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);margin-bottom:1rem}
 .testimonial p{font-family:"Playfair Display",serif;font-size:1.02rem;margin:0 0 .5rem;color:var(--text)}
 .testimonial .who{color:var(--muted);font-weight:700}
 
@@ -128,10 +133,10 @@ h1{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;font-weight:7
 .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(155,127,43,0.12)}
 .btn-ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
 
-/* footer */
+/* Footer */
 footer{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;margin-top:1.5rem}
 
-/* Small screens adjustments: remove enforced JS heights by CSS override */
+/* Responsive tweaks — cancel JS-enforced heights on narrow screens */
 @media (max-width:980px){
   .hero-card, .manifesto-card { min-height: auto !important; }
   .who-card .card, .step .card { height: auto !important; }
@@ -143,7 +148,7 @@ footer{display:flex;justify-content:space-between;color:var(--muted);font-size:.
 
 <!-- HERO -->
 <section class="hero" aria-label="Apresentação">
-  <div class="hero-card card" id="heroCard">
+  <div id="heroCard" class="hero-card card">
     <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
     <h1>Lily Zemuner</h1>
     <div class="subtitle">projetos com alma e afeto</div>
@@ -157,8 +162,9 @@ Uma experiência singular de habitar.</p>
     </div>
   </div>
 
-  <div class="hero-visual" id="heroVisual" aria-hidden="false">
-    <img src="assets/images/hero.jpg" alt="Projeto residencial Lily Zemuner" id="heroImg">
+  <div id="heroVisual" class="hero-visual" aria-hidden="false">
+    <!-- use original filename, do not crop; object-fit:contain preserves entire image -->
+    <img id="heroImg" src="assets/images/hero.jpg" alt="Projeto residencial Lily Zemuner">
   </div>
 </section>
 
@@ -183,7 +189,7 @@ Uma experiência singular de habitar.</p>
 
 <!-- MANIFESTO -->
 <section class="manifesto" aria-label="Manifesto">
-  <div class="manifesto-card card" id="manifestoCard">
+  <div id="manifestoCard" class="manifesto-card card">
     <h3 class="manifesto-inner-title">Manifesto</h3>
     <p class="manifesto-text">
 Há mais de 20 anos, transformo espaços em narrativas silenciosas, onde cada escolha carrega intenção, memória e afeto.
@@ -194,8 +200,8 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
     <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <strong>Lily Zemuner</strong></div>
   </div>
 
-  <div class="manifesto-media card" id="manifestoMedia">
-    <img src="assets/images/manifesto.jpg" alt="Detalhe de projeto arquitetônico" id="manifestoImg">
+  <div id="manifestoMedia" class="manifesto-media card">
+    <img id="manifestoImg" src="assets/images/manifesto.jpg" alt="Detalhe de projeto arquitetônico">
   </div>
 </section>
 
@@ -229,13 +235,13 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
 
 <!-- TESTIMONIAL -->
 <div class="testimonial card">
-  <p>“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
-  <div class="who" style="margin-top:.6rem;color:var(--muted);font-weight:700">— Mariana Alves</div>
+  <p style="font-family:'Playfair Display',serif;font-size:1.02rem;margin:0 0 .5rem;">“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
+  <div style="color:var(--muted);font-weight:700">— Mariana Alves</div>
 </div>
 
 <!-- FINAL CTA -->
 <div class="final-cta">
-  <a class="btn-primary" href="formulario.html" id="final-cta">Solicitar Orçamento</a>
+  <a id="final-cta" class="btn-primary" href="formulario.html">Solicitar Orçamento</a>
   <a class="btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
 </div>
 
@@ -247,57 +253,82 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
 </main>
 
 <script>
-/* Equalize heights between image containers and their paired text cards.
-   Do not crop images — use the image's displayed height and set the paired card min-height to match.
-   For grids (who, steps) CSS grid-auto-rows:1fr handles equalization of their cards.
+/*
+  1) Equalize heights between image containers and their paired text cards so
+     the white boxes appear visually matched to the image heights.
+  2) Use vertical centering in the paired card content to avoid large empty zones.
+  3) Recompute on load and resize.
 */
-function equalizeHeights(){
-  // Hero: set heroCard minHeight to displayed hero image height
+function equalizePairs(){
   const heroImg = document.getElementById('heroImg');
   const heroCard = document.getElementById('heroCard');
-  if(heroImg && heroCard){
-    const rect = heroImg.getBoundingClientRect();
-    // only set when image has rendered and width > 0
-    if(rect.height > 10){
-      heroCard.style.minHeight = Math.ceil(rect.height) + 'px';
-    }
-  }
-
-  // Manifesto: set manifestoCard minHeight to displayed manifesto image height
   const mImg = document.getElementById('manifestoImg');
   const mCard = document.getElementById('manifestoCard');
+
+  // reset first
+  if(heroCard) heroCard.style.minHeight = '';
+  if(mCard) mCard.style.minHeight = '';
+
+  // Hero pair
+  if(heroImg && heroCard){
+    const rect = heroImg.getBoundingClientRect();
+    if(rect.height > 20){
+      // make card minHeight equal to image height, but keep a comfortable padding
+      const target = Math.ceil(rect.height);
+      heroCard.style.minHeight = target + 'px';
+      // center content
+      heroCard.style.display = 'flex';
+      heroCard.style.flexDirection = 'column';
+      heroCard.style.justifyContent = 'center';
+    }
+  }
+
+  // Manifesto pair
   if(mImg && mCard){
     const rect2 = mImg.getBoundingClientRect();
-    if(rect2.height > 10){
-      mCard.style.minHeight = Math.ceil(rect2.height) + 'px';
+    if(rect2.height > 20){
+      const target2 = Math.ceil(rect2.height);
+      mCard.style.minHeight = target2 + 'px';
+      mCard.style.display = 'flex';
+      mCard.style.flexDirection = 'column';
+      mCard.style.justifyContent = 'center';
     }
   }
 
-  // Ensure who-card and step card heights normalized by CSS grid-auto-rows (no JS needed)
+  // Ensure 'who' and 'steps' grids are consistent via CSS grid-auto-rows:1fr
 }
 
-// Run on load, image load, and resize
-window.addEventListener('load', function(){
-  // if images still loading, wait for them
-  const heroImg = document.getElementById('heroImg');
-  const manifestImg = document.getElementById('manifestoImg');
-
-  let loaded = 0;
-  function onMaybeReady(){
-    equalizeHeights();
-    loaded++;
-    if(loaded >= 2){
-      // done
+function onImagesReady(callback){
+  const imgs = [document.getElementById('heroImg'), document.getElementById('manifestoImg')].filter(Boolean);
+  let remaining = imgs.length;
+  if(remaining === 0) return callback();
+  imgs.forEach(img=>{
+    if(img.complete && img.naturalHeight !== 0){
+      remaining -= 1;
+      if(remaining === 0) callback();
+    } else {
+      img.addEventListener('load', ()=>{
+        remaining -= 1;
+        if(remaining === 0) callback();
+      });
+      img.addEventListener('error', ()=> {
+        // if image fails, still attempt equalization after short delay
+        remaining -= 1;
+        if(remaining === 0) callback();
+      });
     }
-  }
+  });
+}
 
-  if(heroImg.complete) onMaybeReady(); else heroImg.addEventListener('load', onMaybeReady);
-  if(manifestImg.complete) onMaybeReady(); else manifestImg.addEventListener('load', onMaybeReady);
+function initEqualize(){
+  onImagesReady(()=>{
+    equalizePairs();
+    // safety: one more call after a short delay
+    setTimeout(equalizePairs, 350);
+  });
+}
 
-  // fallback run after small timeout
-  setTimeout(equalizeHeights, 600);
-});
-
+window.addEventListener('load', initEqualize);
 window.addEventListener('resize', function(){
   // clear previous min-heights first to recompute accurately
   const heroCard = document.getElementById('heroCard');
@@ -305,8 +336,11 @@ window.addEventListener('resize', function(){
   if(heroCard) heroCard.style.minHeight = '';
   if(mCard) mCard.style.minHeight = '';
   // recompute
-  equalizeHeights();
+  initEqualize();
 });
+
+// year
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
