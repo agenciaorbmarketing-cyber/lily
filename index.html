@@ -3,265 +3,279 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Solicitar Orçamento — Lily Zemuner</title>
-<meta name="description" content="Formulário de solicitação de orçamento — Lily Zemuner.">
+<title>Lily Zemuner — projetos com alma e afeto</title>
+<meta name="description" content="Lily Zemuner — projetos residenciais autorais de alto padrão. Projetos que unem funcionalidade, sofisticação e sensibilidade." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lily Zemuner — projetos com alma e afeto" />
+<meta property="og:description" content="Projetos residenciais autorais de alto padrão. Sofisticação, funcionalidade e sensibilidade." />
+<meta property="og:image" content="assets/images/og-hero.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
 <style>
-:root{font-size:16px;--bg:#fbf8f5;--muted:#7a746c;--accent:#c49b3a;--accent-2:#927033;--ink:#22221f;--radius:.875rem;--max:47.5rem}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--ink);padding:28px}
-.container{max-width:var(--max);margin:24px auto;background:#fff;border-radius:var(--radius);padding:1.25rem;box-shadow:0 18px 40px rgba(0,0,0,0.05)}
-.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
-.header img{height:2.5rem}
-h1{font-family:"Playfair Display",serif;margin:0 0 .25rem 0;font-size:1.625rem}
-.lead{color:var(--muted);margin-bottom:1rem}
-
-/* steps bar */
-.steps{display:flex;gap:.5rem;margin-bottom:1rem}
-.step-ind{flex:1;height:.375rem;background:#efeae5;border-radius:.375rem}
-.step-ind.active{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
-
-/* cards */
-.step-card{background:#fff;border-radius:.75rem;padding:1.125rem;border:1px solid #f0ebe6;margin-bottom:.75rem}
-label{display:block;font-weight:700;color:var(--muted);margin-bottom:.5rem}
-.input, textarea, select{width:100%;padding:.9rem;border-radius:.75rem;border:1px solid #e7e1da;font-size:1rem;background:#fff}
-.radio-grid{display:flex;gap:.75rem;margin-top:.5rem;flex-wrap:wrap}
-.option{flex:1;min-width:9rem;padding:.95rem;border-radius:.75rem;border:1px solid #eee;background:#fff;cursor:pointer;font-weight:700;text-align:center;transition:all 180ms ease}
-.option.active{border-color:var(--accent);box-shadow:0 12px 30px rgba(176,138,85,0.08);background:linear-gradient(180deg, rgba(176,138,85,0.06), rgba(176,138,85,0.02));color:var(--ink)}
-.err{color:#b44336;font-size:.8125rem;min-height:1rem;margin-top:.5rem}
-.actions{display:flex;justify-content:space-between;gap:.75rem;margin-top:.75rem}
-.btn{padding:.75rem 1rem;border-radius:.75rem;border:0;cursor:pointer;font-weight:700}
-.btn-ghost{background:none;color:var(--muted);border:1px solid rgba(0,0,0,0.04)}
-.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
-.thank{display:none;text-align:center;padding:1rem}
-
-/* no button wrapping in mobile actions - keep space and stack if needed */
-@media (max-width:640px){
-  .actions{flex-direction:column;align-items:stretch}
-  .actions .btn{width:100%;padding:.85rem 1rem;white-space:normal}
+:root{
+  font-size:16px;
+  --bg:#fbf7f3;
+  --card:#ffffff;
+  --muted:#7a746c;
+  --accent:#c49b3a;
+  --accent-dark:#927033;
+  --ink:#262320;
+  --radius:1.25rem;
+  --max-width:68rem;
+  --shadow: 0 1.375rem 3.375rem rgba(20,18,16,0.06);
+  --gutter:1.75rem;
 }
 
-/* focus */
-:focus{outline:3px solid rgba(196,155,58,0.16);outline-offset:3px}
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:linear-gradient(180deg,var(--bg),#f4f1ed);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
+}
+
+/* Focus for accessibility */
+:focus{outline:3px solid rgba(196,155,58,0.16);outline-offset:3px;transition:outline-offset .12s}
+
+/* Layout */
+main{max-width:var(--max-width);margin:0 auto;padding:2rem}
+.hero{display:grid;grid-template-columns:1fr 32rem;gap:var(--gutter);align-items:stretch;margin:0 0 1.5rem 0}
+.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:.8125rem;color:var(--accent-dark);font-weight:700;letter-spacing:.06em;margin-bottom:.75rem}
+.title{font-family:"Playfair Display",serif;font-size:2.75rem;margin:0;line-height:1.06;letter-spacing:-0.02em}
+.subtitle{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--muted);margin:.5rem 0 1rem 0}
+.lead{color:var(--muted);font-size:.9375rem;max-width:68ch;margin-top:.6rem;line-height:1.6}
+
+/* top inline CTA */
+.top-cta{margin-top:1.25rem}
+.btn-inline{display:inline-flex;align-items:center;gap:.5rem;padding:.625rem .875rem;border-radius:.75rem;font-weight:700;text-decoration:none;border:1px solid rgba(146,112,51,0.12);color:var(--accent-dark);background:rgba(196,155,58,0.04);transition:transform .16s,box-shadow .16s;white-space:nowrap}
+.btn-inline:hover{transform:translateY(-3px);box-shadow:0 .5rem 1rem rgba(146,112,51,0.08)}
+
+/* hero image */
+.hero-visual{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);min-height:26rem;background:#ece8e4;display:flex;align-items:center;justify-content:center}
+.hero-visual img{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
+
+/* Section title and cards */
+.section-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);letter-spacing:.06em;margin-top:1.75rem}
+.who{margin-top:.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem}
+.who-card{background:var(--card);border-radius:.875rem;padding:1.125rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .75rem 1.875rem rgba(20,18,16,0.03);display:flex;flex-direction:column}
+.who-card h3{font-family:"Playfair Display",serif;margin:0 0 .5rem 0;font-size:1rem}
+.who-card p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.45}
+
+/* manifesto */
+.manifesto-section{margin-top:1.75rem}
+.manifesto-title{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin:0 0 .75rem 0;font-weight:700}
+.manifesto-layout{display:grid;grid-template-columns:1fr 26rem;gap:1.5rem;align-items:start}
+.manifesto-card{background:linear-gradient(180deg,#fff,#fbf9f7);padding:1.5rem;border-radius:.875rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.02);display:flex;flex-direction:column;justify-content:space-between}
+.manifesto-text{font-family:Inter,system-ui;color:var(--muted);font-size:.9375rem;line-height:1.7;max-width:64ch;white-space:pre-wrap;margin:0}
+.manifesto-welcome{margin-top:.9rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent);font-weight:600;display:inline-block;position:relative;padding-top:.5rem}
+.manifesto-welcome::before{content:"";display:block;height:2px;width:4rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));margin-bottom:.6rem}
+
+/* manifesto media */
+.manifesto-media{border-radius:.75rem;overflow:hidden;height:100%;max-height:26rem;background:#efeae5;display:flex;align-items:center;justify-content:center}
+.manifesto-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* steps */
+.steps-intro{margin-top:1.5rem;font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--accent-dark);margin-bottom:.5rem}
+.steps-sub{color:var(--muted);margin:0 0 1rem 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0.875rem}
+.step{background:var(--card);border-radius:.75rem;padding:1rem;border:1px solid rgba(0,0,0,0.03);box-shadow:0 .625rem 1.625rem rgba(20,18,16,0.03)}
+.step .num{width:2.25rem;height:2.25rem;border-radius:.625rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.625rem}
+.step h4{margin:0 0 .5rem 0;font-family:"Playfair Display",serif;font-size:1rem}
+.step p{margin:0;color:var(--muted);font-size:.875rem;line-height:1.45}
+
+/* testimonial */
+.testimonial{margin-top:1.5rem;background:linear-gradient(180deg,#fff,#fbf9f7);border-radius:.875rem;padding:1.25rem;border:1px solid rgba(0,0,0,0.03);box-shadow:var(--shadow)}
+.testimonial p{font-family:"Playfair Display",serif;font-size:1.125rem;color:var(--ink);margin:0 0 .625rem 0;line-height:1.35}
+.testimonial .who{color:var(--muted);font-weight:700}
+
+/* final CTA — stylized and non-wrapping on desktop */
+.final-cta{margin-top:1.25rem;display:flex;gap:.875rem;align-items:center;flex-wrap:wrap}
+.final-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;border-radius:.875rem;text-decoration:none}
+.final-cta .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(146,112,51,0.12);white-space:nowrap}
+.final-cta .btn-ghost{background:#fff;border:1px solid rgba(36,34,31,0.06);color:var(--ink);white-space:nowrap}
+
+/* ensure buttons don't wrap awkwardly on mobile — stack instead */
+@media (max-width:600px){
+  .final-cta{flex-direction:column;align-items:stretch}
+  .final-cta a{width:100%;justify-content:center;white-space:normal;padding:.85rem 1rem}
+  .top-cta .btn-inline{white-space:normal}
+}
+
+/* small responsive tweaks */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:1.25rem}
+  .who{grid-template-columns:1fr}
+  .manifesto-layout{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .hero-visual{min-height:20rem}
+}
+@media (max-width:560px){
+  main{padding:1.25rem}
+  .title{font-size:1.875rem}
+  .subtitle{font-size:1rem}
+  .steps{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="container" role="main" aria-labelledby="formTitle">
-  <div class="header">
-    <div style="display:flex;align-items:center;gap:.75rem">
-      <img src="assets/images/logo.png" alt="Lily Zemuner">
-      <div style="font-family:Playfair Display,serif;font-weight:600">Solicitar Orçamento</div>
+<main role="main">
+  <!-- HERO -->
+  <section class="hero" aria-label="Apresentação">
+    <div class="hero-card" aria-labelledby="hero-title">
+      <div class="eyebrow">Arquiteta · Interiores · Alto padrão</div>
+      <h1 class="title" id="hero-title">Lily Zemuner</h1>
+      <div class="subtitle">projetos com alma e afeto</div>
+      <p class="lead">Projetos residenciais autorais que equilibram estética, função e conforto, com atenção absoluta aos detalhes, materiais e à experiência do morar.</p>
+
+      <div class="top-cta">
+        <a class="btn-inline" href="formulario.html">Solicitar Orçamento</a>
+      </div>
     </div>
-    <a href="index.html" style="text-decoration:none;color:var(--muted)">Voltar</a>
+
+    <aside class="hero-visual" role="img" aria-label="Lily Zemuner — fotografia institucional">
+      <picture>
+        <source type="image/webp" srcset="assets/images/hero-1200.webp 1200w, assets/images/hero-800.webp 800w" />
+        <!-- fallback: use existing hero.jpg to ensure it always shows -->
+        <img src="assets/images/hero.jpg" alt="Lily Zemuner — fotografia institucional" width="1200" height="800" />
+      </picture>
+    </aside>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <h2 class="section-title who-title">Para quem criamos</h2>
+  <section class="who" aria-label="Para quem é">
+    <article class="who-card">
+      <h3>Quem está construindo ou reformando</h3>
+      <p>Planejamento antes da obra para evitar retrabalhos e garantir o melhor resultado: organização, custos e execução alinhados ao projeto.</p>
+    </article>
+
+    <article class="who-card">
+      <h3>Quem valoriza projeto autoral e acabamento</h3>
+      <p>Soluções pensadas para identidade, conforto e materiais que valorizam o imóvel no uso diário e no tempo.</p>
+    </article>
+
+    <article class="who-card">
+      <h3>Quem entende arquitetura como investimento</h3>
+      <p>Projetos que potenciam patrimônio e qualidade de vida, com decisões técnicas e estéticas orientadas por valor e resultado.</p>
+    </article>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto-section" aria-labelledby="manifesto-title">
+    <h2 id="manifesto-title" class="manifesto-title">Manifesto</h2>
+
+    <div class="manifesto-layout">
+      <div class="manifesto-card">
+        <p class="manifesto-text">
+Há mais de 20 anos, transformo espaços em narrativas silenciosas, onde cada escolha carrega intenção, memória e afeto.
+Nossos projetos nascem do encontro entre funcionalidade, sofisticação e sensibilidade.
+
+Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso escutar o que não é dito, traduzir sensações e unir ergonomia, conforto e elegância para criar ambientes que acolhem, emocionam e revelam identidade em cada detalhe.
+        </p>
+
+        <div class="manifesto-welcome">Seja bem-vindo(a) à experiência <strong>Lily Zemuner</strong></div>
+      </div>
+
+      <figure class="manifesto-media" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="assets/images/manifesto-1200.webp 1200w, assets/images/manifesto-800.webp 800w" />
+          <img src="assets/images/manifesto.jpg" alt="Detalhe de material — experiência Lily Zemuner" width="800" height="1000" loading="lazy" />
+        </picture>
+      </figure>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <div style="margin-top:1.5rem">
+    <div class="steps-intro">Os passos que adotamos na sua reforma</div>
+    <p class="steps-sub">Um processo claro, artesanal e pensado para alto padrão.</p>
   </div>
 
-  <h1 id="formTitle">Solicitar Orçamento</h1>
-  <p class="lead">Preencha as etapas. Ao finalizar você será redirecionado ao WhatsApp com as informações.</p>
+  <section class="steps" aria-label="Como funciona">
+    <article class="step" aria-labelledby="step-1">
+      <div class="num">1</div>
+      <h4 id="step-1">Pré-questionário</h4>
+      <p>Alguns dados iniciais para compreendermos o escopo e as prioridades do projeto.</p>
+    </article>
 
-  <div class="steps" aria-hidden="true">
-    <div class="step-ind active" data-index="0"></div>
-    <div class="step-ind" data-index="1"></div>
-    <div class="step-ind" data-index="2"></div>
-    <div class="step-ind" data-index="3"></div>
-    <div class="step-ind" data-index="4"></div>
-    <div class="step-ind" data-index="5"></div>
+    <article class="step" aria-labelledby="step-2">
+      <div class="num">2</div>
+      <h4 id="step-2">Análise inicial (WhatsApp)</h4>
+      <p>Avaliação prática por mensagem para verificar viabilidade e alinhar próximos passos.</p>
+    </article>
+
+    <article class="step" aria-labelledby="step-3">
+      <div class="num">3</div>
+      <h4 id="step-3">Proposta personalizada</h4>
+      <p>Proposta feita manualmente e adaptada ao seu objetivo, com atenção aos detalhes essenciais.</p>
+    </article>
+
+    <article class="step" aria-labelledby="step-4">
+      <div class="num">4</div>
+      <h4 id="step-4">Reunião estratégica</h4>
+      <p>Conversa decisiva para fechar escopo, prioridades e prazos — presencial ou remota.</p>
+    </article>
+  </section>
+
+  <!-- DEPOIMENTO -->
+  <section class="testimonial" aria-label="Depoimento">
+    <p>“O trabalho de Lily revela uma sensibilidade rara — o projeto trouxe sentido e requinte ao nosso lar. Resultado impecável, execução cuidadosa e postura profundamente profissional.”</p>
+    <div class="who">— Mariana Alves</div>
+  </section>
+
+  <!-- CTA final -->
+  <div class="final-cta" role="region" aria-label="Chamada final">
+    <a class="btn btn-primary" href="formulario.html" id="final-cta">Solicitar Orçamento</a>
+    <a class="btn btn-ghost" href="https://www.instagram.com/lilyzemuner.arquiteta/" target="_blank" rel="noopener">Ver Portfólio</a>
   </div>
 
-  <form id="form" method="post" action="#" novalidate>
-    <div class="step-card" data-step="0">
-      <label for="nome">Nome completo</label>
-      <input id="nome" name="nome" class="input" type="text" autocomplete="name" required aria-required="true" />
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="step-card" data-step="1" hidden>
-      <label>Tipo de projeto</label>
-      <div class="radio-grid" role="radiogroup" aria-label="Tipo de projeto">
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Casa nova">Casa nova</div>
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Reforma">Reforma</div>
-      </div>
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="step-card" data-step="2" hidden>
-      <label for="local">Local do projeto (cidade / bairro)</label>
-      <input id="local" name="local" class="input" type="text" autocomplete="address-level2" required />
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="step-card" data-step="3" hidden>
-      <label>Faixa de investimento estimado</label>
-      <div class="radio-grid" role="radiogroup" aria-label="Faixa de investimento estimado">
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Menos de R$ 500 mil">Menos de R$ 500 mil</div>
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 500 mil a R$ 1 milhão">R$ 500 mil a R$ 1 milhão</div>
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 1 milhão a R$ 5 milhões">R$ 1 milhão a R$ 5 milhões</div>
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Mais de R$ 5 milhões">Mais de R$ 5 milhões</div>
-      </div>
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="step-card" data-step="4" hidden>
-      <label>Deseja adicionar alguma observação?</label>
-      <div class="radio-grid" role="radiogroup" aria-label="Adicionar observação">
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="sim">Sim</div>
-        <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="nao">Não</div>
-      </div>
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="step-card" data-step="5" hidden>
-      <label for="mensagem">Observações</label>
-      <textarea id="mensagem" name="mensagem" class="input" rows="5" placeholder="Digite sua observação"></textarea>
-      <div class="err" aria-live="polite"></div>
-    </div>
-
-    <div class="actions" role="group" aria-label="Ações do formulário">
-      <button type="button" id="back" class="btn btn-ghost">Voltar</button>
-      <button type="button" id="next" class="btn btn-primary">Continuar</button>
-    </div>
-  </form>
-
-  <noscript>
-    <div style="margin-top:1rem;padding:1rem;border-radius:.5rem;background:#fff;border:1px solid #eee">
-      <p style="margin:0 0 .5rem 0;color:#7a746c">Seu navegador não permite scripts. Para solicitar orçamento, envie um e-mail para <a href="mailto:contato@lilyzemuner.com">contato@lilyzemuner.com</a> ou WhatsApp +55 11 99487-3720.</p>
-    </div>
-  </noscript>
-
-  <div class="thank" id="thank" role="status" aria-live="polite" hidden>
-    <h2 style="font-family:Playfair Display,serif">Obrigada</h2>
-    <p style="color:var(--muted)">Seu pedido foi preparado. Você será direcionado ao WhatsApp.</p>
-    <div style="margin-top:.75rem"><a class="btn btn-ghost" href="index.html">Voltar ao início</a></div>
-  </div>
-</div>
+  <footer class="footer" role="contentinfo" style="margin-top:1.25rem;color:var(--muted);font-size:.875rem;display:flex;justify-content:space-between;align-items:center">
+    <div>© <span id="year"></span> Lily Zemuner</div>
+    <div>Publicação via GitHub Pages</div>
+  </footer>
+</main>
 
 <script>
+/* year */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Robust image fallback: if picture sources fail, keep hero.jpg/manifesto.jpg present.
+   If hero.jpg missing, attempt older names and finally do nothing.
+*/
 (function(){
-  const steps = Array.from(document.querySelectorAll('[data-step]'));
-  const indicators = Array.from(document.querySelectorAll('.step-ind'));
-  const nextBtn = document.getElementById('next');
-  const backBtn = document.getElementById('back');
-  const form = document.getElementById('form');
-  const thank = document.getElementById('thank');
-
-  let current = 0;
-  const selection = { tipo:'', investimento:'', desejaObservacao:'', mensagem:'' };
-
-  function show(i){
-    steps.forEach(s => s.hidden = Number(s.dataset.step) !== i);
-    indicators.forEach((ind, idx)=> ind.classList.toggle('active', idx <= i));
-    const focusable = steps[i].querySelector('input, textarea, .option, select');
-    if(focusable) focusable.focus();
-    backBtn.style.visibility = i === 0 ? 'hidden' : 'visible';
-    nextBtn.textContent = i === (steps.length - 1) ? 'Enviar' : 'Continuar';
-  }
-  show(0);
-
-  document.querySelectorAll('.option').forEach(opt=>{
-    opt.addEventListener('click', ()=> {
-      const group = opt.parentNode;
-      group.querySelectorAll('.option').forEach(o => { o.classList.remove('active'); o.setAttribute('aria-checked','false'); });
-      opt.classList.add('active'); opt.setAttribute('aria-checked','true');
-
-      const stepCard = opt.closest('[data-step]');
-      const stepIdx = Number(stepCard.dataset.step);
-      const val = opt.dataset.value;
-      if(stepIdx === 1) selection.tipo = val;
-      if(stepIdx === 3) selection.investimento = val;
-      if(stepIdx === 4) selection.desejaObservacao = val;
+  // hero fallback: if hero image fails, try known fallback names
+  const heroImg = document.querySelector('.hero-visual img');
+  if(heroImg){
+    heroImg.addEventListener('error', function handler(){
+      // if current src isn't the simple hero.jpg, set to hero.jpg
+      if(!this.src.includes('hero.jpg')){
+        this.src = 'assets/images/hero.jpg';
+        return;
+      }
+      this.removeEventListener('error', handler);
     });
-    opt.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); opt.click(); }});
-  });
-
-  function setError(stepIndex, message){
-    const step = steps.find(s => Number(s.dataset.step) === stepIndex);
-    if(!step) return;
-    const err = step.querySelector('.err');
-    err.textContent = message || '';
-    const input = step.querySelector('input, textarea, select');
-    if(input) input.setAttribute('aria-invalid', message ? 'true' : 'false');
   }
 
-  function validateStep(i){
-    setError(i,'');
-    if(i === 0){
-      const nome = document.getElementById('nome');
-      if(!nome.value.trim()){ setError(i,'Campo obrigatório.'); nome.focus(); return false; }
-    }
-    if(i === 1){
-      if(!selection.tipo){ setError(i,'Selecione uma opção.'); return false; }
-    }
-    if(i === 2){
-      const local = document.getElementById('local');
-      if(!local.value.trim()){ setError(i,'Campo obrigatório.'); local.focus(); return false; }
-    }
-    if(i === 3){
-      if(!selection.investimento){ setError(i,'Selecione uma faixa de investimento.'); return false; }
-    }
-    if(i === 4){
-      if(!selection.desejaObservacao){ setError(i,'Selecione Sim ou Não.'); return false; }
-    }
-    return true;
-  }
-
-  nextBtn.addEventListener('click', ()=> {
-    if(current === 4 && selection.desejaObservacao === 'nao'){ enviar(); return; }
-
-    if(!validateStep(current)) return;
-
-    if(current < steps.length - 1){ current++; show(current); return; }
-    enviar();
-  });
-
-  backBtn.addEventListener('click', ()=> { if(current>0){ current--; show(current); } });
-
-  document.getElementById('mensagem').addEventListener('input', (e)=> selection.mensagem = e.target.value.trim());
-
-  document.querySelectorAll('[data-step="4"] .option').forEach(opt=>{
-    opt.addEventListener('click', ()=>{
-      if(opt.dataset.value === 'sim'){ current = 5; show(current); }
-      else if(opt.dataset.value === 'nao'){ enviar(); }
+  const mImg = document.querySelector('.manifesto-media img');
+  if(mImg){
+    mImg.addEventListener('error', function handler2(){
+      if(!this.src.includes('manifesto.jpg')){
+        this.src = 'assets/images/manifesto.jpg';
+        return;
+      }
+      this.removeEventListener('error', handler2);
     });
-  });
-
-  function enviar(){
-    if(!validateStep(0) || !validateStep(1) || !validateStep(2) || !validateStep(3) || !validateStep(4)) return;
-
-    const nome = document.getElementById('nome').value.trim();
-    const local = document.getElementById('local').value.trim();
-    const tipo = selection.tipo || '';
-    const investimento = selection.investimento || '';
-    const desejaObs = selection.desejaObservacao || '';
-    const mensagem = selection.mensagem || (desejaObs === 'nao' ? 'Nenhuma' : '');
-
-    const lines = [
-      'Olá, gostaria de solicitar um orçamento de projeto.',
-      '',
-      'Nome: ' + nome,
-      'Tipo de projeto: ' + tipo,
-      'Local do projeto: ' + local,
-      'Faixa de investimento estimado: ' + investimento,
-      'Deseja adicionar observação: ' + (desejaObs === 'sim' ? 'Sim' : 'Não'),
-      'Observações: ' + (mensagem || 'Nenhuma')
-    ];
-
-    const text = encodeURIComponent(lines.join('\n'));
-    const phone = '5511994873720';
-
-    form.style.display = 'none';
-    thank.hidden = false;
-    window.open('https://api.whatsapp.com/send?phone=' + phone + '&text=' + text, '_blank');
   }
-
-  form.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter'){
-      const tag = document.activeElement.tagName.toLowerCase();
-      if(tag === 'textarea') return;
-      e.preventDefault();
-      nextBtn.click();
-    }
-  });
 })();
 </script>
 </body>
