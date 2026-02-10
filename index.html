@@ -12,118 +12,134 @@
 
 <style>
 :root{
-  --bg: #f6efe6;             /* single uniform beige background */
-  --card: #ffffff;
-  --text: #262320;
-  --muted: #6f6a63;
-  --accent: #c7a639;
-  --accent-dark: #9b7f2b;
-  --radius: 1rem;
-  --container-max: 68rem;
-  --shadow: 0 1.25rem 3rem rgba(20,18,16,0.06);
-  --gutter: 1.25rem;        /* slightly tighter gutters for harmony */
-  --card-pad-small: 1rem;
-  --card-pad-regular: 1.15rem;
-  --card-pad-large: 1.25rem;
+  --bg:#f6efe6;
+  --card:#ffffff;
+  --text:#262320;
+  --muted:#6f6a63;
+  --accent:#c7a639;
+  --accent-dark:#9b7f2b;
+  --radius:1rem;
+  --container-max:68rem;
+  --shadow:0 1.25rem 3rem rgba(20,18,16,0.06);
+  --gutter:1.25rem;
+  --pad-large:1.25rem;
+  --pad-regular:1rem;
+  --pad-small:.85rem;
 }
 
-/* Base reset */
+/* Reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  background:var(--bg); /* uniform background color — no gradient */
+  background:var(--bg);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   line-height:1.55;
   -webkit-text-size-adjust:100%;
 }
 
-/* Focus visible for accessibility */
+/* focus outline */
 :focus{outline:3px solid rgba(199,166,57,0.14);outline-offset:3px}
 
-/* Page container */
-main{max-width:var(--container-max);margin:0 auto;padding:2rem}
+/* container */
+main{max-width:var(--container-max);margin:0 auto;padding:2rem 1.25rem}
 
-/* Reusable card with controlled padding */
+/* reusable card */
 .card{
   background:var(--card);
-  border-radius:calc(var(--radius) + 0.1rem);
-  padding:var(--card-pad-regular);
+  border-radius:calc(var(--radius) + .1rem);
+  padding:var(--pad-regular);
   box-shadow:var(--shadow);
   border:1px solid rgba(0,0,0,0.03);
   display:flex;
   flex-direction:column;
-  gap:0.75rem;
+  gap:.75rem;
 }
 
-/* HERO grid: tighter gutters, align-items:start so JS can equalize */
-.hero{display:grid;grid-template-columns:1fr 480px;gap:var(--gutter);align-items:start;margin-bottom:1.5rem}
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  gap:var(--gutter);
+  align-items:start;
+  margin-bottom:1.4rem;
+}
 @media (max-width:980px){ .hero{grid-template-columns:1fr;gap:1rem} }
 
-/* Hero card content: center vertically when card taller than content */
-.hero-card{display:flex;flex-direction:column;justify-content:center;padding:var(--card-pad-large)}
-.eyebrow{font-size:.88rem;color:var(--accent);font-weight:600;margin:0;text-transform:none}
+.hero-card{display:flex;flex-direction:column;justify-content:center;padding:var(--pad-large)}
+.eyebrow{font-size:.88rem;color:var(--accent);font-weight:600;margin:0}
 h1{font-family:"Playfair Display",serif;font-size:2.8rem;margin:0;font-weight:700;line-height:1.02}
 .subtitle{font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--muted);margin:0}
-.lead{font-size:1rem;color:var(--muted);max-width:52ch;white-space:pre-line;margin-top:.4rem}
+.lead{font-size:1rem;color:var(--muted);max-width:56ch;white-space:pre-line;margin-top:.45rem}
 
-/* Top CTA */
+/* top CTA */
 .top-cta{margin-top:.8rem}
 .btn-inline{
-  display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1rem;border-radius:.75rem;
+  display:inline-flex;align-items:center;gap:.45rem;padding:.6rem .95rem;border-radius:.75rem;
   text-decoration:none;font-weight:700;color:var(--accent-dark);
   border:1px solid rgba(155,127,43,0.12);background:rgba(199,166,57,0.06);white-space:nowrap;
   transition:transform .14s,box-shadow .14s;
 }
 .btn-inline:hover{transform:translateY(-2px);box-shadow:0 .5rem 1rem rgba(155,127,43,0.08)}
 
-/* HERO visual: show full image, do not crop; image container height will drive paired card height */
+/* hero image container: keep full image, do not crop */
 .hero-visual{display:flex;align-items:center;justify-content:center}
 .hero-visual img{
   width:100%;
   height:auto;
-  max-width:480px;     /* fits column width without stretching */
+  max-width:480px;
   display:block;
   border-radius:.6rem;
   box-shadow:0 8px 24px rgba(20,18,16,0.06);
-  object-fit:contain;  /* ensure image not cropped */
+  object-fit:contain;
 }
 
-/* Section heading style — slightly larger & bold */
-.section-title{font-family:"Playfair Display",serif;font-size:1.12rem;color:var(--accent);margin-top:1.6rem;margin-bottom:.6rem;font-weight:700}
+/* SECTION TITLE */
+.section-title{font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--accent);margin-top:1.5rem;margin-bottom:.6rem;font-weight:700}
 
-/* 'Para quem é' grid: equal heights via grid-auto-rows and stretch cards */
+/* PARA QUEM É */
 .who{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);margin-bottom:1rem;grid-auto-rows:1fr}
 @media (max-width:980px){ .who{grid-template-columns:1fr} }
-.who-card .card{height:100%;display:flex;flex-direction:column;justify-content:center;padding:var(--card-pad-regular)}
+@media (max-width:640px){ .who{grid-template-columns:1fr;gap:.9rem} }
+.who-card .card{height:100%;display:flex;flex-direction:column;justify-content:center;padding:var(--pad-regular)}
 .who-card h3{font-family:"Playfair Display",serif;margin:0;font-size:1.06rem;font-weight:700}
 .who-card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.45}
 
-/* MANIFESTO: title INSIDE card; manifesto media drives card height so pair matches */
+/* MANIFESTO */
 .manifesto{display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter);align-items:start;margin-bottom:1rem;grid-auto-rows:auto}
 @media (max-width:980px){ .manifesto{grid-template-columns:1fr} }
-.manifesto-card{padding:var(--card-pad-large);display:flex;flex-direction:column;justify-content:center}
+@media (max-width:640px){ .manifesto{grid-template-columns:1fr;gap:1rem} }
+.manifesto-card{padding:var(--pad-large);display:flex;flex-direction:column;justify-content:center}
 .manifesto-inner-title{font-family:"Playfair Display",serif;color:var(--accent);font-size:1.08rem;margin:0 0 .6rem;font-weight:700}
 .manifesto-text{margin:0;color:var(--muted);font-size:1rem;white-space:pre-line;max-width:62ch;line-height:1.6}
-.manifesto-welcome{margin-top:.85rem;font-family:"Playfair Display",serif;font-size:1.05rem;color:var(--accent);font-weight:600}
+.manifesto-welcome{
+  margin-top:.85rem;
+  font-family:"Playfair Display",serif;
+  color:var(--accent);
+  font-weight:600;
+  /* keep in one visual line by scaling on small screens */
+  white-space:nowrap;
+  font-size:clamp(.95rem,2.4vw,1.05rem);
+}
 
-/* Manifesto image: preserve full image, will determine paired card height */
+/* manifesto image */
 .manifesto-media{display:flex;align-items:center;justify-content:center}
 .manifesto-media img{width:100%;height:auto;display:block;border-radius:.6rem;box-shadow:0 8px 20px rgba(20,18,16,0.06);object-fit:contain;max-width:420px}
 
-/* STEPS: grid with equal heights */
-.steps-intro{font-family:"Playfair Display",serif;font-size:1.12rem;color:var(--accent);margin-top:1.25rem;margin-bottom:.4rem;font-weight:700}
+/* STEPS */
+.steps-intro{font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--accent);margin-top:1.25rem;margin-bottom:.4rem;font-weight:700}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-bottom:1rem;grid-auto-rows:1fr}
 @media (max-width:980px){ .steps{grid-template-columns:repeat(2,1fr)} }
-.step .card{height:100%;padding:var(--card-pad-small);display:flex;flex-direction:column;justify-content:center}
+@media (max-width:640px){ .steps{grid-template-columns:1fr;gap:.9rem} } /* one column on narrow mobile */
+.step .card{height:100%;padding:var(--pad-small);display:flex;flex-direction:column;justify-content:center}
 .step .num{width:2.2rem;height:2.2rem;border-radius:.5rem;background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:.6rem}
 .step h4{font-family:"Playfair Display",serif;margin:.25rem 0 .5rem;font-size:1.03rem;font-weight:700}
 .step p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
 
 /* TESTIMONIAL */
-.testimonial{padding:var(--card-pad-regular);border-radius:.8rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);margin-bottom:1rem}
+.testimonial{padding:var(--pad-regular);border-radius:.8rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.03);margin-bottom:1rem}
 .testimonial p{font-family:"Playfair Display",serif;font-size:1.02rem;margin:0 0 .5rem;color:var(--text)}
 .testimonial .who{color:var(--muted);font-weight:700}
 
@@ -133,13 +149,19 @@ h1{font-family:"Playfair Display",serif;font-size:2.8rem;margin:0;font-weight:70
 .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:#fff;box-shadow:0 12px 30px rgba(155,127,43,0.12)}
 .btn-ghost{background:#fff;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
 
-/* Footer */
+/* footer */
 footer{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;margin-top:1.5rem}
 
-/* Responsive tweaks — cancel JS-enforced heights on narrow screens */
-@media (max-width:980px){
-  .hero-card, .manifesto-card { min-height: auto !important; }
-  .who-card .card, .step .card { height: auto !important; }
+/* MOBILE FINE-TUNING: reduce large paddings, tighten gaps to avoid big empty zones */
+@media (max-width:640px){
+  main{padding:1.25rem}
+  .card{padding:var(--pad-regular)}
+  h1{font-size:1.9rem}
+  .lead{max-width:44ch}
+  .hero-visual img{max-width:100%}
+  .manifesto-welcome{font-size:0.95rem;white-space:nowrap}
+  .section-title{font-size:1.03rem}
+  .final-cta{flex-direction:column}
 }
 </style>
 </head>
@@ -163,7 +185,7 @@ Uma experiência singular de habitar.</p>
   </div>
 
   <div id="heroVisual" class="hero-visual" aria-hidden="false">
-    <!-- use original filename, do not crop; object-fit:contain preserves entire image -->
+    <!-- keep original image file, no crop -->
     <img id="heroImg" src="assets/images/hero.jpg" alt="Projeto residencial Lily Zemuner">
   </div>
 </section>
@@ -253,11 +275,8 @@ Na arquitetura, assim como na arte, a técnica é apenas o começo. É preciso e
 </main>
 
 <script>
-/*
-  1) Equalize heights between image containers and their paired text cards so
-     the white boxes appear visually matched to the image heights.
-  2) Use vertical centering in the paired card content to avoid large empty zones.
-  3) Recompute on load and resize.
+/* Equalize paired card heights to match images when appropriate.
+   On narrow screens we avoid enforcing heights so vertical stacking occurs naturally.
 */
 function equalizePairs(){
   const heroImg = document.getElementById('heroImg');
@@ -265,37 +284,21 @@ function equalizePairs(){
   const mImg = document.getElementById('manifestoImg');
   const mCard = document.getElementById('manifestoCard');
 
-  // reset first
+  // reset
   if(heroCard) heroCard.style.minHeight = '';
   if(mCard) mCard.style.minHeight = '';
 
-  // Hero pair
-  if(heroImg && heroCard){
-    const rect = heroImg.getBoundingClientRect();
-    if(rect.height > 20){
-      // make card minHeight equal to image height, but keep a comfortable padding
-      const target = Math.ceil(rect.height);
-      heroCard.style.minHeight = target + 'px';
-      // center content
-      heroCard.style.display = 'flex';
-      heroCard.style.flexDirection = 'column';
-      heroCard.style.justifyContent = 'center';
+  // Only apply on wider viewports where side-by-side layout exists
+  if(window.matchMedia('(min-width:981px)').matches){
+    if(heroImg && heroCard){
+      const r = heroImg.getBoundingClientRect();
+      if(r.height > 20) heroCard.style.minHeight = Math.ceil(r.height) + 'px';
+    }
+    if(mImg && mCard){
+      const r2 = mImg.getBoundingClientRect();
+      if(r2.height > 20) mCard.style.minHeight = Math.ceil(r2.height) + 'px';
     }
   }
-
-  // Manifesto pair
-  if(mImg && mCard){
-    const rect2 = mImg.getBoundingClientRect();
-    if(rect2.height > 20){
-      const target2 = Math.ceil(rect2.height);
-      mCard.style.minHeight = target2 + 'px';
-      mCard.style.display = 'flex';
-      mCard.style.flexDirection = 'column';
-      mCard.style.justifyContent = 'center';
-    }
-  }
-
-  // Ensure 'who' and 'steps' grids are consistent via CSS grid-auto-rows:1fr
 }
 
 function onImagesReady(callback){
@@ -311,8 +314,7 @@ function onImagesReady(callback){
         remaining -= 1;
         if(remaining === 0) callback();
       });
-      img.addEventListener('error', ()=> {
-        // if image fails, still attempt equalization after short delay
+      img.addEventListener('error', ()=>{
         remaining -= 1;
         if(remaining === 0) callback();
       });
@@ -320,23 +322,21 @@ function onImagesReady(callback){
   });
 }
 
-function initEqualize(){
+function init(){
   onImagesReady(()=>{
     equalizePairs();
-    // safety: one more call after a short delay
-    setTimeout(equalizePairs, 350);
+    setTimeout(equalizePairs, 300);
   });
 }
 
-window.addEventListener('load', initEqualize);
+window.addEventListener('load', init);
 window.addEventListener('resize', function(){
-  // clear previous min-heights first to recompute accurately
+  // clear previous heights for accurate recompute
   const heroCard = document.getElementById('heroCard');
   const mCard = document.getElementById('manifestoCard');
   if(heroCard) heroCard.style.minHeight = '';
   if(mCard) mCard.style.minHeight = '';
-  // recompute
-  initEqualize();
+  init();
 });
 
 // year
