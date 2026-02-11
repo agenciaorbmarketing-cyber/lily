@@ -93,8 +93,8 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:.5rem}
 
     <!-- STEP 3 (investimento) -->
     <div class="step-card" data-step="3" hidden>
-      <label>Faixa de investimento estimado</label>
-      <div class="radio-grid" role="radiogroup" aria-label="Faixa de investimento estimado">
+      <label>Faixa de investimento estimada para a execução completa da obra</label>
+      <div class="radio-grid" role="radiogroup" aria-label="Faixa de investimento estimada para a execução completa da obra">
         <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="Menos de R$ 500 mil">Menos de R$ 500 mil</div>
         <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 500 mil a R$ 1 milhão">R$ 500 mil a R$ 1 milhão</div>
         <div tabindex="0" role="radio" aria-checked="false" class="option" data-value="R$ 1 milhão a R$ 5 milhões">R$ 1 milhão a R$ 5 milhões</div>
@@ -250,7 +250,7 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:.5rem}
       'Nome: ' + nome,
       'Tipo de projeto: ' + tipo,
       'Local do projeto: ' + local,
-      'Faixa de investimento estimado: ' + investimento,
+      'Faixa de investimento: ' + investimento,
       'Deseja adicionar observação: ' + (desejaObs === 'sim' ? 'Sim' : 'Não'),
       'Observações: ' + (mensagem || 'Nenhuma')
     ];
@@ -276,3 +276,4 @@ label{display:block;font-weight:700;color:var(--muted);margin-bottom:.5rem}
 </script>
 </body>
 </html>
+
